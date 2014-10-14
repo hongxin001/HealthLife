@@ -76,7 +76,7 @@ public class SettingFragment extends Fragment {
 
 		aboutUsDialog = new MyAlertDialog(SettingFragment.this.getActivity());
 		aboutUsDialog.setTitle("关于我们");
-		aboutUsDialog.setContent("来自hust的，王旭、李晗、闫鹏、李舜民、吕剑、高雪沁");
+		aboutUsDialog.setContent("ASCII联合工作室");
 		aboutUsDialog.setCancelable(true);
 		aboutUsDialog.setPositiveButtonVisibility(View.GONE);
 		aboutUsDialog.setNegativeButtonVisibility(View.GONE);

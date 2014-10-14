@@ -8,6 +8,7 @@
     <string name="navi_health_test">健康指数测试</string>
     <string name="navi_invite">约跑</string>
     <string name="navi_setting">设置</string>
+    <string name="navi_control">远程控制</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="logout_tip">双击返回键退出</string>
@@ -89,5 +90,9 @@
     <string name="healt_test_tab_ecg">心电图分析</string>
     <string name="title_activity_heart_rate_his">HeartRateHisActivity</string>
     <string name="hello_world">Hello world!</string>
+    
+    
+    <string name="tem">室温：</string>
+    <string name="wat">湿度：</string>
 
 </resources>

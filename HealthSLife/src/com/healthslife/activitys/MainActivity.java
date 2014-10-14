@@ -32,8 +32,10 @@ import com.healthslife.BaseFragmentActivity;
 import com.healthslife.R;
 import com.healthslife.adapters.NavigationAdapter;
 import com.healthslife.adapters.NavigationAdapter.DataHolder;
+import com.healthslife.fragments.RControlFragment;
 import com.healthslife.fragments.HealthTestFragment;
 import com.healthslife.fragments.InviteFragment;
+import com.healthslife.fragments.RControlFragment;
 import com.healthslife.fragments.SettingFragment;
 import com.healthslife.healthtest.ECGHisActivity;
 import com.healthslife.healthtest.HeartRateHisActivity;
@@ -120,6 +122,9 @@ public class MainActivity extends BaseFragmentActivity {
 			break;
 		case 3:
 			fragment = new SettingFragment();
+			break;
+		case 4:
+			fragment = new RControlFragment();
 			break;
 		default:
 			break;

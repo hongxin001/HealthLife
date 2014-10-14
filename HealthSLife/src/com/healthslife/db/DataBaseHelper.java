@@ -1,12 +1,10 @@
 package com.healthslife.db;
 
 import java.sql.SQLException;
-
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.healthslife.healthtest.dao.ECGAnalysisRecord;
 import com.healthslife.healthtest.dao.HeartRateHisRecord;
 import com.healthslife.run.dao.RunRecord;

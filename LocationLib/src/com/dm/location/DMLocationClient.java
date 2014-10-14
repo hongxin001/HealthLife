@@ -67,7 +67,8 @@ public class DMLocationClient {
 		observerList.clear();
 		observerList.addAll(genObserverList(option));
 		for (DMLocationObserver observer : observerList) {
-			mLocationManager.addLocatoinObserver(observer);
+			mLocationManager.
+			addLocatoinObserver(observer);
 		}
 	}
 

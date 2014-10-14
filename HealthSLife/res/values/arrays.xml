@@ -6,11 +6,13 @@
         <item>@string/navi_health_test</item>
         <item>@string/navi_invite</item>
         <item>@string/navi_setting</item>
+        <item>@string/navi_control</item>
     </array>
     <array name="navigation_icon">
         <item>@drawable/navi_run_selector</item>
         <item>@drawable/navi_heart_selector</item>
         <item>@drawable/navi_invite_selector</item>
+        <item>@drawable/navi_setting_selector</item>
         <item>@drawable/navi_setting_selector</item>
     </array>
 
@@ -48,6 +50,10 @@
     <string-array name="health_test_tab_title">
         <item>@string/healt_test_tab_heart_rate</item>
         <item>@string/healt_test_tab_ecg</item>
+    </string-array>
+    <string-array name="remote_title">
+        <item >控制</item>
+        <item >学习</item>
     </string-array>
 
 </resources>
