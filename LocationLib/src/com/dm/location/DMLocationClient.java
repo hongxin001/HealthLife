@@ -14,6 +14,7 @@ import android.content.ServiceConnection;
 import android.location.LocationManager;
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 
 public class DMLocationClient {
 	private Context mContext;
@@ -47,17 +48,20 @@ public class DMLocationClient {
 	 * 开启定位
 	 */
 	public void start() {
+		boolean bool = false;
 		//如果没有绑定Serivce就绑定
 		if (!hasBindService) {
+			Log.e("Lei","start intent has reached");
 			Intent intent = new Intent(mContext, DMLocationService.class);
-			mContext.bindService(intent, mConn, Context.BIND_AUTO_CREATE);
+			bool = mContext.bindService(intent, mConn, Context.BIND_AUTO_CREATE);
 		}
 		//如果请求参数为空，产生一个默认的位置请求参数
 		if (mOption == null) {
 			mOption = DMLocationClientOption.getDefaultOption();
 		}
-		//开始请求定位。
-		startRequest(mOption);
+		
+		//开始请求定位
+//		startRequest(mOption);
 		isStartd = true;
 	}
 
