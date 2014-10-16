@@ -7,9 +7,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Parcelable;
 
-public class DMLocation implements Serializable {
-
-	
+public class DMLocation implements Serializable {	
 	/**
 	 * 
 	 */

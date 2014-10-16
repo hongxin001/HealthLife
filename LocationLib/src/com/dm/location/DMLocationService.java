@@ -18,13 +18,13 @@ public  class DMLocationService extends Service {
 	@Override
 	public void onCreate() {
 		manager = new DMLocationManager(this);
-		Log.e("Lei","Service has created");
+	
 		super.onCreate();
 	}
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		Log.e("Lei","Service has created");
+	
 		return new LocationBinder();
 	}
 
