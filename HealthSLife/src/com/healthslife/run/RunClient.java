@@ -50,10 +50,6 @@ public class RunClient {
 		return distance;
 	}
 
-	/**
-	 * 
-	 * @return 毫秒
-	 */
 	public long getDuration() {
 		long duration = 0;
 		if (isStop) {
@@ -82,13 +78,13 @@ public class RunClient {
 	}
 
 	private OnLocationChangeListener mListener = new OnLocationChangeListener() {
-
 		@Override
 		public void onLocationChanged(DMLocation location) {
 			if (startLocation == null) {
 				startLocation = location;
 			}
 			float meters = 0;
+			
 			if (currentLocation != null && location != null) {
 				meters = DMLocationUtils.distanceBetween(location, currentLocation);
 				if (meters > currentLocation.getAccuracy()/3) {
@@ -100,7 +96,6 @@ public class RunClient {
 			} else {
 				currentLocation = location;
 			}
-
 			RunClient.this.onLocationChanged(location);
 			if (outListener != null) {
 				outListener.onLocationChanged(location);

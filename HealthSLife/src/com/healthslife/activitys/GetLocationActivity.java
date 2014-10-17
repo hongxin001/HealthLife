@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -49,6 +50,7 @@ public class GetLocationActivity extends BaseFragmentActivity implements OnCamer
 		client.setLocationListener(new OnLocationChangeListener() {
 			@Override
 			public void onLocationChanged(DMLocation loation) {
+				Log.e("Lei","LocationChanged");
 				if (loation != null) {
 					if (listener != null) {
 						listener.onLocationChanged(loation.getLocation());
@@ -105,6 +107,7 @@ public class GetLocationActivity extends BaseFragmentActivity implements OnCamer
 
 	@Override
 	public void onCameraChange(CameraPosition arg0) {
+		
 	}
 
 	@Override

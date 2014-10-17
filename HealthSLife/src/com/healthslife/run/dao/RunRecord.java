@@ -83,7 +83,7 @@ public class RunRecord {
 				DMLocation location = runSetting.getDest();
 				if (location != null) {
 					record.setTargetLat(location.getLatitude());
-					record.setTargetLng(location.getLatitude());
+					record.setTargetLng(location.getLongitude());
 					record.setTargetDestName(runSetting.getDestName());
 					record.setTargetDestNameLong(runSetting.getDestNameLong());
 				}
