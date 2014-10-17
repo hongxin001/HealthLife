@@ -55,9 +55,10 @@ public class DMLocation implements Serializable {
 	
 	public DMLocation(double lat,double lng){
 		Location location = new Location(LocationManager.GPS_PROVIDER);
+		//error: override the useful information.
+		init(location);
 		location.setLatitude(lat);
 		location.setLongitude(lng);
-		init(location);
 	}
 
 	public DMLocation(Location location) {

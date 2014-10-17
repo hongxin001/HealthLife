@@ -51,7 +51,6 @@ public class DMLocationClient {
 		boolean bool = false;
 		//如果没有绑定Serivce就绑定
 		if (!hasBindService) {
-			Log.e("Lei","start intent has reached");
 			Intent intent = new Intent(mContext, DMLocationService.class);
 			bool = mContext.bindService(intent, mConn, Context.BIND_AUTO_CREATE);
 		}
@@ -59,7 +58,6 @@ public class DMLocationClient {
 		if (mOption == null) {
 			mOption = DMLocationClientOption.getDefaultOption();
 		}
-		
 		//开始请求定位
 //		startRequest(mOption);
 		isStartd = true;
