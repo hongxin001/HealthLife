@@ -5,6 +5,12 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 
+import android.R.integer;
+import android.content.Context;
+import android.util.Log;
+
+import com.healthslife.setting.AppSetting;
+
 public class RemoteControlClient {
 
 	public DatagramSocket udpSocket	=null;
@@ -14,13 +20,15 @@ public class RemoteControlClient {
 	public String password	=	null;
 	public String newPassword	=	null;
 	public ReceiveCommandLine recieveInfo;
-	
+	private AppSetting mAppSetting;
+	private Context ctx;
 	
 	private static RemoteControlClient sSingletonInstance	=null; 
 	
-	public static RemoteControlClient getInstance() {
+	public static RemoteControlClient getInstance(Context ctx) {
 		if (sSingletonInstance==null) {
-			sSingletonInstance=new RemoteControlClient();		
+			sSingletonInstance=new RemoteControlClient(ctx);
+			
 		}
 		
 		return sSingletonInstance;
@@ -38,19 +46,29 @@ public class RemoteControlClient {
 		return this;
 	}
 	
-	public RemoteControlClient configUser(String usernameString,String passwordString,String newpasswordString) {
-		configUser(usernameString, newpasswordString).setNewPassword(newpasswordString);
+	public RemoteControlClient configUser(String usernameString,
+			String passwordString, String newpasswordString) {
+		configUser(usernameString, newpasswordString).setNewPassword(
+				newpasswordString);
 		return this;
 	}
-	
-	private RemoteControlClient() {
+
+	private RemoteControlClient(Context ctx) {
 		// TODO Auto-generated constructor stub
-        try {
-            this.udpSocket=new DatagramSocket();
-        } catch (SocketException e) {
-            e.printStackTrace();
-        }
-    }
+		try {
+			this.udpSocket = new DatagramSocket();
+		} catch (SocketException e) {
+			e.printStackTrace();
+		}
+		this.ctx = ctx;
+		mAppSetting = new AppSetting(this.ctx);
+		String account = (String) mAppSetting.getRemoteAccount();
+		String psw = (String) mAppSetting.getRemotepsw();
+		if ((account != "") && (psw != "")) {
+			this.configUser(account, psw);
+		}
+
+	}
 	
 	public RemoteControlClient config (String hoString,String port,String username,String password) {
 		configUser(username, password);
@@ -76,17 +94,17 @@ public class RemoteControlClient {
 	}
 	
 	public void send(SendCommandLine commandLine) {
-		byte[] buffer = new byte[100];
+		/*byte[] buffer = new byte[100];
 		commandLine.setUsername(username).setPassword(password);
 		buffer=commandLine.getSendCommandString().getBytes();
 		try {
 			DatagramPacket sSend = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(hostName), Integer.parseInt(portName));
 			this.udpSocket.send(sSend);
 			System.out.println(commandLine.getSendCommandString());
-            //this.udpSocket.close();
+            this.udpSocket.disconnect();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 	}
 
@@ -97,5 +115,25 @@ public class RemoteControlClient {
 	public void setNewPassword(String newPassword) {
 		this.newPassword = newPassword;
 	}
-
+	
+	public void receive(){
+		DatagramSocket socket;
+		try{
+			socket = new DatagramSocket(Integer.parseInt(this.portName));
+			byte data[] = new byte[ 4*1024 ];
+			
+			DatagramPacket packet = new DatagramPacket(data, data.length);
+			socket.receive(packet);
+			
+			String result = new String(packet.getData(),packet.getOffset(),packet.getLength());
+			socket.close();
+			
+			//System.out.println("the number of reveived Socket is  :" + flag  + "udpData:" + result); 
+			Log.v("data:",result);
+		}catch(SocketException e){
+			e.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
 }

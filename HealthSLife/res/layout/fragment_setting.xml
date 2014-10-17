@@ -71,7 +71,7 @@
                 android:textSize="@dimen/text_size_small" />
 
             <ImageView
-                android:id="@+id/setting_right_arrow"
+                android:id="@+id/setting_right_arrow1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:layout_toLeftOf="@+id/setting_right_arrow"
+                android:layout_toLeftOf="@id/setting_right_arrow1"
                 android:src="@drawable/ic_red_switch_on" />
         </RelativeLayout>
 
@@ -109,7 +109,7 @@
                 android:textSize="@dimen/text_size_small" />
 
             <ImageView
-                android:id="@+id/setting_right_arrow"
+                android:id="@+id/setting_right_arrow2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -122,12 +122,48 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
-                android:layout_toLeftOf="@+id/setting_right_arrow"
+                android:layout_toLeftOf="@id/setting_right_arrow2"
                 android:text="5秒"
                 android:textColor="@color/gray_border" />
         </RelativeLayout>
     </LinearLayout>
+	<TextView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:padding="4dp"
+	    android:text="盒子设置"
+	    android:textColor="@color/red"
+        android:textSize="@dimen/text_size_normal"/>
+	<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transparent_stroke_corner_shape"
+        android:orientation="vertical" >
 
+      <RelativeLayout
+            android:id="@+id/setting_remote_account"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/ic_check_update_version"
+                android:drawablePadding="4dp"
+                android:text=""
+                android:textSize="@dimen/text_size_small" />
+            <ImageView
+                android:id="@+id/setting_right_arrow5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_right_arrow_big" />
+        </RelativeLayout>
+       </LinearLayout>
+       
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -162,12 +198,12 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="20dp"
-                android:layout_toLeftOf="@+id/setting_right_arrow"
+                android:layout_toLeftOf="@+id/setting_right_arrow3"
                 android:text="v1.0"
                 android:textColor="@color/gray_border" />
 
             <ImageView
-                android:id="@+id/setting_right_arrow"
+                android:id="@+id/setting_right_arrow3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -196,7 +232,7 @@
                 android:textSize="@dimen/text_size_small" />
 
             <ImageView
-                android:id="@+id/setting_right_arrow"
+                android:id="@+id/setting_right_arrow4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"

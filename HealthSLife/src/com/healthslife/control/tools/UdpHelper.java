@@ -12,6 +12,9 @@ import java.util.Observer;
 
 //import com.example.com.ihome.bang.tool.SendThread;
 
+
+import com.healthslife.services.UDPservice;
+
 import android.net.wifi.WifiManager;
 import android.util.Log;
 
@@ -20,16 +23,14 @@ import android.util.Log;
  *
  * @author 陈喆榕
  */
-public class UdpHelper implements Runnable {
-    public Boolean IsThreadDisable = false;//指示监听线程是否终止
+public class UdpHelper implements Runnable  {
+	public    Boolean IsThreadDisable = false;//指示监听线程是否终止
     private static WifiManager.MulticastLock lock;
-    //InetAddress mInetAddress;
-
+    InetAddress mInetAddress;
     public UdpHelper(WifiManager manager) {
-        this.lock = manager.createMulticastLock("UDPwifi");
+         this.lock= manager.createMulticastLock("UDPwifi"); 
     }
-
-    public void StartListen() {
+    public void StartListen()  {
         // UDP服务器监听的端口
         Integer port = 59995;
         // 接收的字节大小，客户端发送的数据不能超过这个大小
@@ -40,19 +41,17 @@ public class UdpHelper implements Runnable {
             datagramSocket.setBroadcast(true);
             DatagramPacket datagramPacket = new DatagramPacket(message,
                     message.length);
-            Log.v("test",".................");
             try {
                 while (!IsThreadDisable) {
                     // 准备接收数据
                     Log.d("UDP Demo", "准备接受");
-                    this.lock.acquire();
-
+                     this.lock.acquire();
+                     
                     datagramSocket.receive(datagramPacket);
-                    String strMsg = new String(datagramPacket.getData()).trim();
+                    String strMsg=new String(datagramPacket.getData()).trim();
                     Log.d("UDP Demo", datagramPacket.getAddress()
                             .getHostAddress().toString()
-                            + ":" + strMsg);
-                    this.lock.release();
+                            + ":" +strMsg );this.lock.release();
                 }
             } catch (IOException e) {//IOException
                 e.printStackTrace();
@@ -62,11 +61,10 @@ public class UdpHelper implements Runnable {
         }
 
     }
-
-    public static void send() {
-        /*message = (message == null ? "Hello IdeasAndroid!" : message);
+    public static void send(String message) {
+        message = (message == null ? "Hello IdeasAndroid!" : message);
         int server_port = 59995;
-        Log.d("UDP Demo", "UDP发送数据:" + message);
+        Log.d("UDP Demo", "UDP发送数据:"+message);
         DatagramSocket s = null;
         try {
             s = new DatagramSocket();
@@ -75,7 +73,7 @@ public class UdpHelper implements Runnable {
         }
         InetAddress local = null;
         try {
-            local = InetAddress.getByName("255.255.255.255");
+            local = InetAddress.getByName("115.28.45.241");
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
@@ -87,25 +85,19 @@ public class UdpHelper implements Runnable {
 
             s.send(p);
             s.close();
-
+            
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
-        RemoteControlClient client = RemoteControlClient.getInstance();
-        client.config("115.28.45.241", "59995", "00068", "1994");
-        SendCommandLine line = new SendCommandLine();
-        line.setControlName(ControlNameEnum.CONTROL).setAirConditionState(AirConditionStateEnum.LEARNING_ONE);
-
-        Log.v("string", line.getSendCommandString());
-        //UdpHelper helper = new UdpHelper();
-
-        client.send(line);
+        }
     }
 
     @Override
     public void run() {
-        StartListen();
+            StartListen();
     }
-
+	public void addObserver(UDPservice udPservice) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }
