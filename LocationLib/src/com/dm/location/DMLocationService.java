@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 
 /**
  * 保证多个activity使用一个DMLocationManager
@@ -17,11 +18,13 @@ public  class DMLocationService extends Service {
 	@Override
 	public void onCreate() {
 		manager = new DMLocationManager(this);
+	
 		super.onCreate();
 	}
 
 	@Override
 	public IBinder onBind(Intent intent) {
+	
 		return new LocationBinder();
 	}
 

@@ -141,7 +141,6 @@ public class DestinationRunFragment extends Fragment implements RunSettingGetabl
 
 			if (result != null && result.getRegeocodeAddress() != null
 					&& result.getRegeocodeAddress().getFormatAddress() != null) {
-
 				destInfo = new DestInfo();
 				destInfo.location = new Location(LocationManager.GPS_PROVIDER);
 				LatLonPoint point = result.getRegeocodeQuery().getPoint();
