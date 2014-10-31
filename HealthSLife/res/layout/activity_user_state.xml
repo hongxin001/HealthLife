@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    >
+    <com.healthslife.widget.roundedimageview.RoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/rounded_imageView"
+            android:src="@drawable/head_portrait"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:corner_radius="50dp"
+            />
+    <TextView android:id="@+id/telephone_number"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/rounded_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        android:text="13006180386"
+        />
+    <LinearLayout 
+        android:id="@+id/carori_heartrate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/telephone_number"
+        android:orientation="horizontal"
+        >
+        <LinearLayout 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calorie"
+                android:contentDescription="calorie"/>
+            <TextView android:id="@+id/calorie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="31"
+                android:textSize="20sp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+        <LinearLayout 
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            >
+            <ImageView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calorie"
+                android:contentDescription="heartRate"/>
+            <TextView android:id="@+id/heartRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="74"
+                android:textSize="20sp"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout android:id="@+id/exercise"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/carori_heartrate">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/exercise"/>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/heartrate"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/exercise">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/heartbeat"/>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/house_cont"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/heartrate">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/house_cont"/>
+    </RelativeLayout>
+	<RelativeLayout android:id="@+id/data_center"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@id/house_cont">
+        <ImageView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/data_center"/>
+    </RelativeLayout>
+    <RelativeLayout android:layout_alignParentBottom="true"
+        android:id="@+id/setting"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content">
+        <ImageView android:id="@+id/user_state_setting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/setting"/>
+    </RelativeLayout>
+</RelativeLayout>
