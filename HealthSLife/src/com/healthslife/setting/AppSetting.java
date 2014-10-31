@@ -11,6 +11,7 @@ public class AppSetting {
 	private static final String RUN_ALARM = "RUN_ALARM";
 	private static final String REMOTE_ACCOUNT = "REMOTE_ACCOUNT";
 	private static final String REMOTE_PSW = "REMOTE_PSW";
+	private static final String REMOTE_LISTEN = "REMOTE_LISTEN";
 	private Context mContext;
 
 	public AppSetting(Context context) {
@@ -58,10 +59,10 @@ public class AppSetting {
 		return preferences.getString(REMOTE_ACCOUNT, "00068");
 	}
 	
-	public void setRemoteAccount(boolean isOn) {
+	public void setRemoteAccount(String account) {
 		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
 		Editor editor = preferences.edit();
-		editor.putBoolean(REMOTE_ACCOUNT, isOn);
+		editor.putString(REMOTE_ACCOUNT, account);
 		editor.commit();
 	}
 	
@@ -70,11 +71,24 @@ public class AppSetting {
 		return preferences.getString(REMOTE_PSW, "1994");
 	}
 	
-	public void setRemotepsw(boolean isOn) {
+	public void setRemotepsw(String psw) {
 		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
 		Editor editor = preferences.edit();
-		editor.putBoolean(REMOTE_PSW, isOn);
+		editor.putString(REMOTE_PSW, psw);
 		editor.commit();
 	}
+	
+	public boolean getRemoteListen() {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		return preferences.getBoolean(REMOTE_LISTEN, true);
+	}
+
+	public void setRemoteListen(boolean isOn) {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		Editor editor = preferences.edit();
+		editor.putBoolean(REMOTE_LISTEN, isOn);
+		editor.commit();
+	}
+	
 
 }

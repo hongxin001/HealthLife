@@ -76,6 +76,15 @@
         </service>
         <service android:name="com.healthslife.services.UDPservice"></service>
         <service android:name="com.healthslife.services.UDPListenerService"></service>
+        
+        <receiver android:name="com.healthslife.receiver.UDPReceiver">
+            <intent-filter >
+                <action android:name="android.intent.action.MY_BROADCAST"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            
+        </receiver>
+        
 
         <activity android:name="com.healthslife.activitys.NormalRunActivity" >
         </activity>

@@ -28,7 +28,6 @@ public class RemoteControlClient {
 	public static RemoteControlClient getInstance(Context ctx) {
 		if (sSingletonInstance==null) {
 			sSingletonInstance=new RemoteControlClient(ctx);
-			
 		}
 		
 		return sSingletonInstance;
@@ -93,18 +92,28 @@ public class RemoteControlClient {
 		
 	}
 	
-	public void send(SendCommandLine commandLine) {
-		/*byte[] buffer = new byte[100];
+	public String send(SendCommandLine commandLine) {
+		byte[] buffer = new byte[100];
 		commandLine.setUsername(username).setPassword(password);
 		buffer=commandLine.getSendCommandString().getBytes();
+		DatagramPacket receivePacket = null;
 		try {
 			DatagramPacket sSend = new DatagramPacket(buffer, buffer.length, InetAddress.getByName(hostName), Integer.parseInt(portName));
+			byte[] recvBuf = new byte[15000];
+			receivePacket =
+				    new DatagramPacket(new byte[recvBuf.length], recvBuf.length);
 			this.udpSocket.send(sSend);
+			this.udpSocket.receive(receivePacket);
+			Log.v("message","Received: " + new String(receivePacket.getData()).trim());
+			
+			
 			System.out.println(commandLine.getSendCommandString());
             this.udpSocket.disconnect();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}*/
+		}
+		String message = new String(receivePacket.getData()).trim();
+		return message;
 		
 	}
 
@@ -116,24 +125,6 @@ public class RemoteControlClient {
 		this.newPassword = newPassword;
 	}
 	
-	public void receive(){
-		DatagramSocket socket;
-		try{
-			socket = new DatagramSocket(Integer.parseInt(this.portName));
-			byte data[] = new byte[ 4*1024 ];
-			
-			DatagramPacket packet = new DatagramPacket(data, data.length);
-			socket.receive(packet);
-			
-			String result = new String(packet.getData(),packet.getOffset(),packet.getLength());
-			socket.close();
-			
-			//System.out.println("the number of reveived Socket is  :" + flag  + "udpData:" + result); 
-			Log.v("data:",result);
-		}catch(SocketException e){
-			e.printStackTrace();
-		}catch(IOException e){
-			e.printStackTrace();
-		}
-	}
+	
+
 }

@@ -35,6 +35,8 @@
                 android:id="@+id/remote_temp_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/remote_temp"
+                android:text="34"
            	android:textSize="@dimen/text_size_big" />
         </RelativeLayout>
 
@@ -53,7 +55,9 @@
             <TextView
                 android:id="@+id/remote_humi_num"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
+                android:layout_height="wrap_content"
+                android:text="34" 
+                android:layout_toRightOf="@id/remote_humi"
                 android:textSize="@dimen/text_size_big"/>
         </RelativeLayout>
     </LinearLayout>

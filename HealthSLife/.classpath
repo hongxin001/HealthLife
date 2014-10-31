@@ -9,6 +9,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ShareSDK"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/LocSDK"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

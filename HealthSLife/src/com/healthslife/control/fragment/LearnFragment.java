@@ -44,6 +44,7 @@ public class LearnFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		executorService = Executors.newFixedThreadPool(5);
+		
 	}
 
 	@Override
@@ -75,10 +76,10 @@ public class LearnFragment extends Fragment {
 						client.send(line);
 					}
 				});
-				Intent i = new Intent(getActivity(),UDPListenerService.class);
+				
 				// Toast.makeText(getActivity(), "请先连接盒子",
 				// Toast.LENGTH_LONG).show();
-				getActivity().startService(i);
+				
 			}
 		});
 		return v;

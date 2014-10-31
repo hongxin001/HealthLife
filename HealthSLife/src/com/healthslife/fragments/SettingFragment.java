@@ -5,6 +5,8 @@ import java.util.concurrent.Executors;
 
 import com.healthslife.R;
 import com.healthslife.control.tools.ControlNameEnum;
+import com.healthslife.control.tools.ControlTools;
+import com.healthslife.control.tools.LoginStateEnum;
 import com.healthslife.control.tools.RemoteControlClient;
 import com.healthslife.control.tools.SendCommandLine;
 import com.healthslife.dialog.MyAlertDialog;
@@ -30,6 +32,8 @@ public class SettingFragment extends Fragment {
 
 	private ImageView runAlarmImageView;
 	private ImageView runMusicImageView;
+	private ImageView listenSettingImageView;
+	
 	private View aboutUsView;
 	private View checkUpdateView;
 	private View countDownTimeView;
@@ -51,16 +55,22 @@ public class SettingFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		
 		View view = inflater.inflate(R.layout.fragment_setting, null);
 		runAlarmImageView = (ImageView) view
 				.findViewById(R.id.setting_run_alarm_img);
 		runMusicImageView = (ImageView) view
 				.findViewById(R.id.setting_run_music_img);
+		listenSettingImageView = (ImageView)view.findViewById(R.id.listen_setting_img);
+		
+		
 		aboutUsView = view.findViewById(R.id.setting_about_us_layout);
 		checkUpdateView = view.findViewById(R.id.setting_check_update_layout);
 		countDownTimeView = view.findViewById(R.id.setting_count_down_layout);
 		countDownTextView = (TextView) view
 				.findViewById(R.id.setting_count_down_txt);
+		
+		
 		mAppSetting = new AppSetting(getActivity());
 		setView();
 		initDialog();
@@ -77,17 +87,26 @@ public class SettingFragment extends Fragment {
 	private void setView() {
 		runAlarmImageView.setOnClickListener(myOnClickListener);
 		runMusicImageView.setOnClickListener(myOnClickListener);
+		listenSettingImageView.setOnClickListener(myOnClickListener);
+		//状态调整
 		if (mAppSetting.getRunAlarmState()) {
 			runAlarmImageView.setImageResource(R.drawable.ic_red_switch_on);
 		} else {
 			runAlarmImageView.setImageResource(R.drawable.ic_red_switch_off);
 		}
+		
 		if (mAppSetting.getRunMusicState()) {
 			runMusicImageView.setImageResource(R.drawable.ic_red_switch_on);
 		} else {
 			runMusicImageView.setImageResource(R.drawable.ic_red_switch_off);
 		}
-
+		
+		if(mAppSetting.getRemoteListen()){
+			listenSettingImageView.setImageResource(R.drawable.ic_red_switch_on);
+		}else{
+			listenSettingImageView.setImageResource(R.drawable.ic_red_switch_off);
+		}
+		
 		aboutUsView.setOnClickListener(myOnClickListener);
 		checkUpdateView.setOnClickListener(myOnClickListener);
 		countDownTimeView.setOnClickListener(myOnClickListener);
@@ -132,27 +151,27 @@ public class SettingFragment extends Fragment {
 		edit_account = (EditText) layout.findViewById(R.id.edit_account);
 		edit_account = (EditText) layout.findViewById(R.id.edit_psw);
 
-		dialog.setPositiveButton("搜索", new DialogInterface.OnClickListener() {
+		dialog.setPositiveButton("登录", new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				final String account = edit_account.getText().toString();
 				final String psw = edit_psw.getText().toString();
-				executorService.submit(new Runnable() {
-
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						Context ctx = (Context) getActivity();
-						RemoteControlClient client = RemoteControlClient
-								.getInstance(ctx);
-						client.configNetwork("115.28.45.241", "59995");
-						SendCommandLine line = new SendCommandLine();
-						line.setControlName(ControlNameEnum.LOGIN)
-								.setUsername(account).setPassword(psw);
-						Log.v("lineText", line.getSendCommandString());
-						client.send(line);
-					}
-				});
+				
+				AppSetting setting = new AppSetting(getActivity());
+				setting.setRemoteAccount(account);
+				setting.setRemotepsw(psw);
+				ControlTools tools = new ControlTools();
+				tools.init(getActivity());
+				LoginStateEnum answer = tools.verify();
+				if(answer == LoginStateEnum.SUCCESS){
+					
+				}else if(answer == LoginStateEnum.PASSWORD_ERROR){
+					
+				}else if(answer == LoginStateEnum.OFF_LINE){
+					
+				}else{
+					
+				}
 
 			}
 		});
@@ -188,6 +207,16 @@ public class SettingFragment extends Fragment {
 				} else {
 					mAppSetting.setRunMusicState(true);
 					runMusicImageView
+							.setImageResource(R.drawable.ic_red_switch_on);
+				}
+			}else if (listenSettingImageView == v ){
+				if (mAppSetting.getRemoteListen()) {
+					mAppSetting.setRemoteListen(false);
+					listenSettingImageView
+							.setImageResource(R.drawable.ic_red_switch_off);
+				} else {
+					mAppSetting.setRemoteListen(true);
+					listenSettingImageView
 							.setImageResource(R.drawable.ic_red_switch_on);
 				}
 			}

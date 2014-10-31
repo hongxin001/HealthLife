@@ -127,20 +127,22 @@
                 android:textColor="@color/gray_border" />
         </RelativeLayout>
     </LinearLayout>
-	<TextView 
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:padding="4dp"
-	    android:text="盒子设置"
-	    android:textColor="@color/red"
-        android:textSize="@dimen/text_size_normal"/>
-	<LinearLayout
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text="盒子设置"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_size_normal" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/transparent_stroke_corner_shape"
         android:orientation="vertical" >
 
-      <RelativeLayout
+        <RelativeLayout
             android:id="@+id/setting_remote_account"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -154,6 +156,7 @@
                 android:drawablePadding="4dp"
                 android:text=""
                 android:textSize="@dimen/text_size_small" />
+
             <ImageView
                 android:id="@+id/setting_right_arrow5"
                 android:layout_width="wrap_content"
@@ -162,8 +165,45 @@
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_right_arrow_big" />
         </RelativeLayout>
-       </LinearLayout>
-       
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_border" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawableLeft="@drawable/ic_alarm"
+                android:drawablePadding="4dp"
+                android:text="电器监听"
+                android:textSize="@dimen/text_size_small" />
+
+            <ImageView
+                android:id="@+id/listen_setting_right_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_right_arrow_big" />
+
+            <ImageView
+                android:id="@+id/listen_setting_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/listen_setting_right_arrow"
+                android:src="@drawable/ic_red_switch_on" />
+        </RelativeLayout>
+    </LinearLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
