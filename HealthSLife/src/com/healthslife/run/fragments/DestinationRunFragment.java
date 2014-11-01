@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -27,9 +28,11 @@ import com.amap.api.services.geocoder.GeocodeSearch;
 import com.amap.api.services.geocoder.GeocodeSearch.OnGeocodeSearchListener;
 import com.amap.api.services.geocoder.RegeocodeQuery;
 import com.amap.api.services.geocoder.RegeocodeResult;
+
 import com.dm.location.DMLocation;
 import com.healthslife.R;
 import com.healthslife.activitys.GetLocationActivity;
+import com.healthslife.activitys.NaviRunActivity;
 import com.healthslife.dialog.HttpLoadingDialog;
 import com.healthslife.run.dao.RunRecord;
 import com.healthslife.run.dao.RunRecordDB;
@@ -38,7 +41,7 @@ import com.healthslife.run.dao.RunSettingGetable;
 
 public class DestinationRunFragment extends Fragment implements RunSettingGetable, OnClickListener,
 		OnGeocodeSearchListener {
-	private TextView destInputEdt;
+	private EditText destInputEdt;
 	private View earthBtn;
 	private static final int DEST_REQUEST_CODE = 1;
 	private GeocodeSearch geocode;
@@ -48,18 +51,21 @@ public class DestinationRunFragment extends Fragment implements RunSettingGetabl
 	private ListView historyListView;
 	private List<RunRecord> historyRunList = new ArrayList<RunRecord>();
 	private RunRecordDB recordDB;
+	
+	
+	
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View root = inflater.inflate(R.layout.fragment_run_destiation, container, false);
-		destInputEdt = (TextView) root.findViewById(R.id.run_target_dest_input_edt);
+		destInputEdt = (EditText) root.findViewById(R.id.run_target_dest_input_edt);
 		// destInputEdt.setEnabled(false);
-		destInputEdt.setOnClickListener(this);
+//		destInputEdt.setOnClickListener(this);
 		earthBtn = root.findViewById(R.id.run_target_dest_earth_btn);
 		earthBtn.setOnClickListener(this);
-		geocode = new GeocodeSearch(getActivity());
-		geocode.setOnGeocodeSearchListener(this);
-		dialog = new HttpLoadingDialog(getActivity());
+//		geocode = new GeocodeSearch(getActivity());
+//		geocode.setOnGeocodeSearchListener(this);
+//		dialog = new HttpLoadingDialog(getActivity());
 
 		historyListView = (ListView) root.findViewById(R.id.run_target_dest_history_list);
 		historyListView.setAdapter(mHistoryAdapter);
@@ -110,10 +116,17 @@ public class DestinationRunFragment extends Fragment implements RunSettingGetabl
 
 	@Override
 	public void onClick(View v) {
-		if (v == earthBtn || v == destInputEdt) {
-			Intent intent = new Intent(getActivity(), GetLocationActivity.class);
-			startActivityForResult(intent, DEST_REQUEST_CODE);
-		}
+//		if (v == earthBtn || v == destInputEdt) {
+//			Intent intent = new Intent(getActivity(), GetLocationActivity.class);
+//			startActivityForResult(intent, DEST_REQUEST_CODE);
+		Intent intent  = new Intent(getActivity(),NaviRunActivity.class);
+		startActivity(intent);
+//		}
+		
+		
+		
+		
+		
 	}
 
 	@Override
