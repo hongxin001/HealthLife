@@ -25,7 +25,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class ControlFragment extends Fragment {
-
 	private Button btn1;
 	private Button btn2;
 	private Button btn3;

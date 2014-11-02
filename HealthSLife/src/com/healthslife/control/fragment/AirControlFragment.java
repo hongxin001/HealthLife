@@ -41,7 +41,6 @@ public class AirControlFragment extends Fragment implements OnClickListener{
 		hotBtn.setOnClickListener(this);
 		upBtn.setOnClickListener(this);
 		downBtn.setOnClickListener(this);
-		
 		return v;
 		
 	}
@@ -51,21 +50,18 @@ public class AirControlFragment extends Fragment implements OnClickListener{
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.closebtn:
-			
 			break;
-		case R.id.openbtn:
-			
-			break;
-		case R.id.coldbtn:
-			break;
-		case R.id.hotbtn:
-			break;
-		case R.id.upbtn:
-			break;
-		case R.id.downbtn:
-			break;
+//		case R.id.openbtn:
+//			break;
+//		case R.id.coldbtn:
+//			break;
+//		case R.id.hotbtn:
+//			break;
+//		case R.id.upbtn:
+//			break;
+//		case R.id.downbtn:
+//			break;
 		default:
-			break;
 		}
 		
 	}

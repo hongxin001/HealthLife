@@ -7,6 +7,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/MusicLib"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ShareSDK"/>
 	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/PagerSlidingTabStrip"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="output" path="bin/classes"/>

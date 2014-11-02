@@ -56,8 +56,6 @@ public class RemoteListFragment extends Fragment {
 		
 		manager = getActivity().getSupportFragmentManager();
 		
-		
-		
 	}
 
 	@Override
