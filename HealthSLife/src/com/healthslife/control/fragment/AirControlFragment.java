@@ -56,16 +56,15 @@ public class AirControlFragment extends Fragment implements OnClickListener{
 		case R.id.openbtn:
 			
 			break;
-		case R.id.coldbtn:
+/*		case R.id.coldbtn:
 			break;
 		case R.id.hotbtn:
 			break;
 		case R.id.upbtn:
 			break;
 		case R.id.downbtn:
-			break;
+			break;*/
 		default:
-			break;
 		}
 		
 	}

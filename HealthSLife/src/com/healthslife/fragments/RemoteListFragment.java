@@ -66,7 +66,7 @@ public class RemoteListFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onCreateView(inflater, container,savedInstanceState);
 		View view = inflater.inflate(R.layout.fragment_remote_list, null, false);
-		mList = (GridView)view.findViewById(R.id.remote_list);
+		mList = (GridView)view.findViewById(R.id.remotelist);
 		mList.setNumColumns(2);
 		
 		
@@ -152,15 +152,15 @@ public class RemoteListFragment extends Fragment {
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			HashMap<String, String> map = this.getItem(position);
+			HashMap<String, String> amap = this.getItem(position);
 			if(map.get("type").equals("air")){
-				holder.img.setImageDrawable(R.drawable.aircon);
+				holder.img.setImageResource(R.drawable.aircon);
 			}else if(map.get("type").equals("light")){
-				holder.img.setImageDrawable(R.drawable.lamp);
+				holder.img.setImageResource(R.drawable.lamp);
 			}
 			
 			if(position == list.size()){
-				holder.img.setImageDrawable(R.drawable.add);
+				holder.img.setImageResource(R.drawable.add);
 			}
 			
 			return convertView;
