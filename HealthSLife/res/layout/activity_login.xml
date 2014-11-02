@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
     android:background="@drawable/background">
-    
+    <com.healthslife.widget.roundedimageview.RoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/login_activity_round"
+            android:src="@drawable/head_portrait"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:corner_radius="50dp"
+            />
+    <EditText
+        android:id="@+id/phone_number"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/login_activity_round"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp"
+        android:background="@drawable/textview_shape"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Phone Number"
+        />
+    <RelativeLayout
+        android:id="@+id/jdfaiodjf"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/phone_number">
+	    <EditText
+	        android:id="@+id/identity"
+	        android:layout_width="220dp"
+	        android:layout_height="40dp"
+	        android:background="@drawable/textview_shape"
+	        android:ems="10"
+	        android:gravity="center"
+	        android:hint="Identify"/>
+	    <TextView
+	        android:id="@+id/get"
+	        android:layout_width="70dp"
+	        android:layout_height="40dp"
+	        android:layout_marginLeft="10dp"
+	        android:text="Get"
+	        android:gravity="center"
+	        android:textColor="#fff"
+	        android:textStyle="bold"
+	        android:ems="20"
+	        android:textSize="22sp"
+	        android:background="@drawable/get_shape"
+	        android:layout_toRightOf="@id/identity"
+	        android:layout_alignTop="@id/identity"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/commit_log_in"
+        android:background="@drawable/log_in_confirm"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/jdfaiodjf"
+        android:layout_marginTop="50dp"
+       	android:gravity="center"
+	   	android:textColor="#fff"
+	   	android:textStyle="bold"
+		android:ems="20"
+		android:textSize="22sp" 
+        android:text="Confirm"/>
 
-</LinearLayout>
+</RelativeLayout>

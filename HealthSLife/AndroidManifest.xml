@@ -123,6 +123,7 @@
         </activity>
         <activity android:name=".healthtest.ECGHisActivity" >
         </activity>
+        
         <activity android:name="com.healthslife.activitys.SplashActivity">
                <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -132,9 +133,13 @@
         </activity>
         <activity android:name="com.healthslife.activitys.LoginActivity">    
         </activity>
-        <activity android:name="com.healthslife.activitys.UserStateActivity">    
-        </activity>
+        <activity android:name="com.healthslife.activitys.UserStateActivity"/>   
         <activity android:name="com.healthslife.activitys.HeartRateActivity"/>
+        <activity android:name="com.healthslife.activitys.ExerciseActivity"/>
+        <activity android:name="com.healthslife.activitys.HouseCtrlActivity"/>
+        <activity android:name="com.healthslife.activitys.DataCenterActivity"/>
+        <activity android:name="com.healthslife.activitys.SettingActivity"/>
+        <activity android:name="com.healthslife.activitys.newMainActivity"/>
         <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
 </service>
     </application>
