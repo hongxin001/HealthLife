@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom" >
+
+    <android.support.v4.widget.DrawerLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+ 
+        </RelativeLayout>
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@drawable/background"
+            >
+            <com.healthslife.widget.roundedimageview.RoundedImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/rounded_imageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/head_portrait"
+                app:corner_radius="50dp" />
+           <TextView
+                android:id="@+id/telephone_number"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/rounded_imageView"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:text="13006180386"
+                android:textColor="#fff"
+                android:textSize="27sp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:id="@+id/carori_heartrate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/telephone_number"
+                android:orientation="horizontal" >
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="calorie"
+                        android:src="@drawable/calorie" />
+                    <TextView
+                        android:id="@+id/calorie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="31"
+                        android:textColor="#fff"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="heartRate"
+                        android:src="@drawable/heartrate" />
+                    <TextView
+                        android:id="@+id/heartRate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="74"
+                        android:textColor="#fff"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+            <RelativeLayout
+                android:id="@+id/exercise"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/carori_heartrate" >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/exercise" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/heartrate"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/exercise" >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/heart_rate" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/house_cont"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/heartrate" >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/house_cont" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/data_center"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/house_cont" >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/data_center" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true" >
+                <ImageView
+                    android:id="@+id/user_state_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/setting" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v4.widget.DrawerLayout>
+	
+</RelativeLayout>
