@@ -10,5 +10,18 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/PagerSlidingTabStrip"/>
 	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="lib" path="libs/volley.jar"/>
+	<classpathentry kind="lib" path="libs/android_api_1.1_forsdk.jar"/>
+	<classpathentry kind="lib" path="libs/android-async-http-1.4.4.jar"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="libs/BaiduNaviSDK_no_tts_v1_1_0.jar"/>
+	<classpathentry kind="lib" path="libs/galaxy_mini_lbs.jar"/>
+	<classpathentry kind="lib" path="libs/galaxy_mini.jar"/>
+	<classpathentry kind="lib" path="libs/javacpp.jar"/>
+	<classpathentry kind="lib" path="libs/javacv.jar"/>
+	<classpathentry kind="lib" path="libs/lbsCoreSDK.jar"/>
+	<classpathentry kind="lib" path="libs/ormlite-android-4.48.jar"/>
+	<classpathentry kind="lib" path="libs/ormlite-core-4.48.jar"/>
+	<classpathentry kind="lib" path="libs/universal-image-loader-1.9.1.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
