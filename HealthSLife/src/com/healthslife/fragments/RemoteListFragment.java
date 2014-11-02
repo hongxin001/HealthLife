@@ -21,13 +21,15 @@ import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 public class RemoteListFragment extends Fragment {
 	private ArrayList<HashMap<String, String>> list;
 	private HashMap<String, String> air, light;
-	private ListView mList;
+	private GridView mList;
 	private MyAdapter mAdapter;
 	private Fragment controlFragment;
 	FragmentManager manager ;
@@ -38,7 +40,9 @@ public class RemoteListFragment extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-
+		
+		
+		
 		list = new ArrayList<HashMap<String, String>>();
 		air = new HashMap<String, String>();
 		air.put("type", "air");
@@ -62,7 +66,11 @@ public class RemoteListFragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onCreateView(inflater, container,savedInstanceState);
 		View view = inflater.inflate(R.layout.fragment_remote_list, null, false);
-		mList = (ListView)view.findViewById(R.id.remote_list);
+		mList = (GridView)view.findViewById(R.id.remote_list);
+		mList.setNumColumns(2);
+		
+		
+		
 		mAdapter = new MyAdapter(getActivity());
 		mList.setAdapter(mAdapter);
 		
@@ -103,11 +111,11 @@ public class RemoteListFragment extends Fragment {
 
 	class MyAdapter extends BaseAdapter {
 		private LayoutInflater mInflater;
-		UDPReceiver receiver = new UDPReceiver();
-
+		private Context ctx;
 		public MyAdapter(Context context) {
 			// TODO Auto-generated constructor stub
 			this.mInflater = LayoutInflater.from(context);
+			this.ctx = context;
 		}
 
 		@Override
@@ -134,54 +142,35 @@ public class RemoteListFragment extends Fragment {
 
 			HashMap<String, String> map = (HashMap) getItem(position);
 			String type = map.get("type");
-
-			if (type.equals("air")) {
-				RemoteAirViewHolder holder;
-				if (convertView == null) {
-					convertView = mInflater.inflate(
-							R.layout.item_air_condition, null);
-					holder = new RemoteAirViewHolder();
-					holder.mRemoteName = (TextView) convertView
-							.findViewById(R.id.remote_name);
-					holder.mRemoteTempNum = (TextView) convertView
-							.findViewById(R.id.remote_temp_num);
-					holder.mRemotehumiNum = (TextView) convertView
-							.findViewById(R.id.remote_humi_num);
-					convertView.setTag(holder);
-				} else {
-					holder = (RemoteAirViewHolder) convertView.getTag();
-				}
-				
-				holder.mRemoteName.setText(map.get("name"));
-				holder.mRemoteTempNum.setText("34");
-				holder.mRemotehumiNum.setText("35");
-			} else if (type.equals("light")) {
-				RemoteLightViewHolder holder;
-				if (convertView == null) {
-					convertView = mInflater.inflate(R.layout.item_light, null);
-					holder = new RemoteLightViewHolder();
-					holder.mRemoteName = (TextView) convertView
-							.findViewById(R.id.remote_light_name);
-					convertView.setTag(holder);
-				} else {
-					holder = (RemoteLightViewHolder) convertView.getTag();
-				}
-				holder.mRemoteName.setText(map.get("name"));
-			}else{
-				Log.v("type", "error");
+			ViewHolder holder;
+			if (convertView == null) {
+				convertView = mInflater.inflate(R.layout.item_air_condition,
+						null);
+				holder = new ViewHolder();
+				holder.img = (ImageView) convertView.findViewById(R.id.img);
+				convertView.setTag(holder);
+			} else {
+				holder = (ViewHolder) convertView.getTag();
 			}
+			HashMap<String, String> map = this.getItem(position);
+			if(map.get("type").equals("air")){
+				holder.img.setImageDrawable(R.drawable.aircon);
+			}else if(map.get("type").equals("light")){
+				holder.img.setImageDrawable(R.drawable.lamp);
+			}
+			
+			if(position == list.size()){
+				holder.img.setImageDrawable(R.drawable.add);
+			}
+			
 			return convertView;
 		}
 		
 	
 	}
 
-	public final class RemoteAirViewHolder {
-		public TextView mRemoteName;
-		private TextView mRemoteTemp;
-		private TextView mRemoteTempNum;
-		private TextView mRemotehumi;
-		private TextView mRemotehumiNum;
+	public final class ViewHolder {
+		public ImageView img;
 	}
 
 	public final class RemoteLightViewHolder {

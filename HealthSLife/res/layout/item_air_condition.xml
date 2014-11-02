@@ -1,65 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical" 
     android:padding="10dp">
+	<ImageView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/img"
+	    />
 
-    <TextView
-        android:id="@+id/remote_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:text="空调"
-        android:textSize="@dimen/text_size_big">
-    </TextView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="20dp"
-        android:orientation="horizontal" >
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <TextView
-                android:id="@+id/remote_temp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" 
-                android:text="温度："
-                android:textSize="@dimen/text_size_big"/>
-
-            <TextView
-                android:id="@+id/remote_temp_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/remote_temp"
-                android:text="34"
-           	android:textSize="@dimen/text_size_big" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
-
-            <TextView
-                android:id="@+id/remote_humi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="湿度："
-                android:textSize="@dimen/text_size_big" />
-
-            <TextView
-                android:id="@+id/remote_humi_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="34" 
-                android:layout_toRightOf="@id/remote_humi"
-                android:textSize="@dimen/text_size_big"/>
-        </RelativeLayout>
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

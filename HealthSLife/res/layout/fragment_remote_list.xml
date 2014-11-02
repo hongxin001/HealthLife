@@ -3,8 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <ListView 
-        android:id = "@+id/remote_list"
-        android:layout_height="match_parent"
-        android:layout_width = "match_parent"></ListView>
+
+    <GridView
+        android:id="@+id/remotelist"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:horizontalSpacing="10dip"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="17dip" >
+    </GridView>
+	
 </LinearLayout>

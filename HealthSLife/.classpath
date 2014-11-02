@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/LocationLib"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MusicLib"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/PagerSlidingTabStrip"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/ShareSDK"/>
-	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="gen"/>
-<<<<<<< HEAD
-=======
-	<classpathentry kind="lib" path="ormlite-android-4.48-sources.jar"/>
-	<classpathentry kind="lib" path="ormlite-core-4.48-sources.jar"/>
-	<classpathentry kind="lib" path="libs/android_api_1.1_forsdk.jar"/>
-	<classpathentry kind="lib" path="libs/android-async-http-1.4.4.jar"/>
-	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
-	<classpathentry kind="lib" path="libs/galaxy_mini.jar"/>
-	<classpathentry kind="lib" path="libs/javacpp.jar"/>
-	<classpathentry kind="lib" path="libs/javacv.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/ormlite-android-4.48.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/ormlite-core-4.48.jar"/>
-	<classpathentry exported="true" kind="lib" path="libs/universal-image-loader-1.9.1.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
->>>>>>> 73437cb1665302ea6537bb39c1be5399bca99bcf
+	<classpathentry combineaccessrules="false" kind="src" path="/appcompat_v7"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/LocationLib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/MusicLib"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ShareSDK"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/PagerSlidingTabStrip"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

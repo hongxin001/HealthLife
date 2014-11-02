@@ -3,56 +3,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:padding="15dp"
     tools:context="com.hustascii.remotecontrol.fragment.LearnFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="80dp"
+        android:layout_height="120dp"
         android:layout_marginTop="10dp"
-        android:background="@android:color/darker_gray"
+        android:background="@drawable/display_cold"
         android:id="@+id/screen">
-
+		
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="1">
+            android:paddingLeft="50dp"
+            android:paddingRight="30dp">
 
-            <TextView
-                android:paddingLeft="4dp"
-                android:paddingRight="0dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tem"
-                android:textSize="30dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30dp"
-                android:id="@+id/tem" />
+			<ImageView
+			    android:layout_width="30dp"
+			    android:layout_height="30dp"
+			    android:layout_alignParentLeft="true"
+			    android:layout_centerVertical="true"
+			    android:src="@drawable/snow" />
+			
+			
         </RelativeLayout>
+		
+		<RelativeLayout 
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+			android:gravity="center_vertical"
+		    android:layout_marginLeft="65dp"
+		    android:paddingBottom="10dp"
+		    android:paddingTop="55dp">
+		    <TextView 
+		        android:text="34"
+		        android:typeface="monospace"
+		        android:textSize="50dp"
+		        android:textColor="#58b7f9"
+		        android:layout_height="wrap_content"
+		        android:layout_width="wrap_content"/>
+		    
+		    
+		</RelativeLayout>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30dp"
-                android:text="@string/wat" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="30dp"
-                android:id="@+id/wat" />
-        </RelativeLayout>
     </LinearLayout>
 
 
@@ -68,73 +64,128 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="关闭"
-                android:id="@+id/closebtn"
-                android:layout_weight="1"/>
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:text="27"
+                android:paddingLeft="40dp"
+                android:paddingRight="0dp"
+                android:paddingTop="19dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@drawable/cold_condition"
+                android:id="@+id/closebtn"/>
+
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="开启"
                 android:id="@+id/openbtn"
-                android:layout_weight="1"/>
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="40dp"
+                
+                android:text="27"
+                android:paddingLeft="40dp"
+                android:paddingRight="0dp"
+                android:paddingTop="19dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@drawable/warm_condition" />
+
         </LinearLayout>
 
-        <LinearLayout
+         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="制冷"
-                android:layout_weight="1"
-                android:id="@+id/coldbtn"/>
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:text="27"
+                android:paddingLeft="40dp"
+                android:paddingRight="0dp"
+                android:paddingTop="19dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@drawable/cold_condition"/>
+
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="制热"
-                android:layout_weight="1"
-                android:id="@+id/hotbtn"/>
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="40dp"
+                android:text="27"
+                android:paddingLeft="40dp"
+                android:paddingRight="0dp"
+                android:paddingTop="19dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@drawable/warm_condition" />
+
         </LinearLayout>
-        <LinearLayout
+        
+          <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="上调"
-                android:layout_weight="1"
-                android:id="@+id/downbtn"/>
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:text="27"
+                android:paddingLeft="40dp"
+                android:paddingRight="0dp"
+                android:paddingTop="19dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@drawable/cold_condition"/>
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="下调"
-                android:layout_weight="1"
-                android:id="@+id/upbtn"/>
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="40dp"
+                android:text="27"
+                android:paddingLeft="40dp"
+                android:paddingRight="0dp"
+                android:paddingTop="19dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@drawable/warm_condition" />
+
         </LinearLayout>
-        <LinearLayout
+        
+           <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+"
-                android:layout_weight="1"/>
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:text="27"
+                android:paddingLeft="40dp"
+                android:paddingRight="0dp"
+                android:paddingTop="19dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@drawable/cold_condition"/>
+            
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+"
-                android:layout_weight="1"/>
+                android:layout_width="100dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="40dp"
+                android:text="27"
+                android:paddingLeft="40dp"
+                android:paddingRight="0dp"
+                android:paddingTop="19dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:background="@drawable/warm_condition" />
+
         </LinearLayout>
+         
     </LinearLayout>
 
 </RelativeLayout>

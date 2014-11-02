@@ -31,10 +31,10 @@ public class AirControlFragment extends Fragment implements OnClickListener{
 		View v = (View)inflater.inflate(R.layout.fragment_air_control,container, false);
 		closeBtn = (Button)v.findViewById(R.id.closebtn);
 		openBtn = (Button)v.findViewById(R.id.openbtn);
-		coldBtn = (Button)v.findViewById(R.id.coldbtn);
-		hotBtn = (Button)v.findViewById(R.id.hotbtn);
-		upBtn = (Button)v.findViewById(R.id.upbtn);
-		downBtn = (Button)v.findViewById(R.id.downbtn);
+		//coldBtn = (Button)v.findViewById(R.id.coldbtn);
+		//hotBtn = (Button)v.findViewById(R.id.hotbtn);
+		//upBtn = (Button)v.findViewById(R.id.upbtn);
+		//downBtn = (Button)v.findViewById(R.id.downbtn);
 		closeBtn.setOnClickListener(this);
 		openBtn.setOnClickListener(this);
 		coldBtn.setOnClickListener(this);
