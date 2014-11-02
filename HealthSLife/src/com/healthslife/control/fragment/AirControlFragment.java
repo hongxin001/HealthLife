@@ -40,9 +40,9 @@ public class AirControlFragment extends Fragment implements OnClickListener{
 		coldBtn.setOnClickListener(this);
 		hotBtn.setOnClickListener(this);
 		upBtn.setOnClickListener(this);
-		downBtn.setOnClickListener(this);
-		
+		downBtn.setOnClickListener(this);		
 		return v;
+		
 		
 	}
 

@@ -9,6 +9,7 @@ import com.healthslife.db.DataBaseHelper;
 import com.healthslife.music.MusicUtil;
 import com.healthslife.services.UDPListenerService;
 import com.healthslife.setting.AppSetting;
+import com.healthslife.utils.RequestManager;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -29,13 +30,8 @@ public class BaseApplication extends Application {
 		ImageLoader.getInstance().init(config);
 		
 		MusicUtil.initPlayer(this);
+		RequestManager.init(this);
 		
-		
-		if(mAppSetting.getRemoteListen()){
-			Log.v("service", "open");
-			Intent i = new Intent(this,UDPListenerService.class);
-			startService(i);
-		}
 		super.onCreate();
 	}
 	public BaseApplication getInstance() {
