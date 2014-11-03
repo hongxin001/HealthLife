@@ -67,11 +67,6 @@
         
 		<activity android:name="com.healthslife.activitys.NaviRunActivity"  
 			android:configChanges="orientation|screenSize|keyboard|keyboardHidden">
-		    <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 		</activity> 
         <activity
             android:name="com.healthslife.activitys.MainActivity"
@@ -125,13 +120,14 @@
         </activity>
         
         <activity android:name="com.healthslife.activitys.SplashActivity">
-               <intent-filter>
+               
+        </activity>
+        <activity android:name="com.healthslife.activitys.LoginActivity"> 
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name="com.healthslife.activitys.LoginActivity">    
         </activity>
         <activity android:name="com.healthslife.activitys.UserStateActivity"/>   
         <activity android:name="com.healthslife.activitys.HeartRateActivity"/>

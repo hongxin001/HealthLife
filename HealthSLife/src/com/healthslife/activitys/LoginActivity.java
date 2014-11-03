@@ -1,10 +1,21 @@
 package com.healthslife.activitys;
 
 
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Response;
 import com.healthslife.R;
+import com.healthslife.activitys.BaseActivity;
+import com.healthslife.activitys.newMainActivity;
+import com.healthslife.utils.Configs;
+import com.healthslife.utils.String2Request;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,6 +29,7 @@ public class LoginActivity extends BaseActivity {
 	EditText Identify;
 	TextView getIdentify;
 	Button confirButton;
+	private String token;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,6 +37,7 @@ public class LoginActivity extends BaseActivity {
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏
 		setContentView(R.layout.activity_login);
+		token = null;
 		findView();
 		onClick();
 	}
@@ -39,17 +52,41 @@ public class LoginActivity extends BaseActivity {
 		getIdentify.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+				executeRequest(new String2Request(Configs.GET_TOKEN, "utf-8", responseListener(),
+		                errorListener()){
+					@Override
+					protected Map<String, String> getParams()
+							throws AuthFailureError {
+						// TODO Auto-generated method stub
+						Map<String, String> m = new HashMap<String, String>();
+						m.put("telnum",phoneNumber.getText().toString() );
+						return m;
+					}
+				});
 			}
 		});
 		
 		confirButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				gotoMainActivity();
+				executeRequest(new String2Request(Configs.VERIFY_TOKEN, "utf-8", suresponseListener(),
+		                errorListener()){
+					@Override
+					protected Map<String, String> getParams()
+							throws AuthFailureError {
+						// TODO Auto-generated method stub
+						Map<String, String> m = new HashMap<String, String>();
+						m.put("telnum",phoneNumber.getText().toString() );
+						m.put("token", token);
+						return m;
+					}
+				});
+				
 			}
 		});
 	}
+	
+	
 	
 	
 	public void gotoMainActivity(){
@@ -57,5 +94,25 @@ public class LoginActivity extends BaseActivity {
 		finish();
 		overridePendingTransition(R.anim.in_from_right,R.anim.out_to_left);
 	}
+	
+    private Response.Listener<String> responseListener(){
+        return new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+            	Log.v("message", s);
+            	token = s;
+            }
+        };
+    }
+    
+    private Response.Listener<String> suresponseListener(){
+        return new Response.Listener<String>() {
+            @Override
+            public void onResponse(String s) {
+            	Log.v("message", s);
+            	gotoMainActivity();
+            }
+        };
+    }
 	
 }
