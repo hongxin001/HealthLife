@@ -120,14 +120,14 @@
         </activity>
         
         <activity android:name="com.healthslife.activitys.SplashActivity">
-               
-        </activity>
-        <activity android:name="com.healthslife.activitys.LoginActivity"> 
-            <intent-filter>
+               <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.healthslife.activitys.LoginActivity"> 
+            
         </activity>
         <activity android:name="com.healthslife.activitys.UserStateActivity"/>   
         <activity android:name="com.healthslife.activitys.HeartRateActivity"/>

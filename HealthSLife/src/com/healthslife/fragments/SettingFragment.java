@@ -51,6 +51,16 @@ public class SettingFragment extends Fragment {
 	private EditText edit_account;
 	private EditText edit_psw;
 	private ExecutorService executorService;
+	
+	private static SettingFragment self;
+	
+	public static SettingFragment getInstance(){
+		if(self!=null){
+			return self;
+		}else{
+			return self = new SettingFragment();
+		}
+	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

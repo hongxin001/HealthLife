@@ -179,7 +179,6 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener 
 	protected void refreshData() {
 		AlphaAnimation mAlphaAnimation = new AlphaAnimation(1, 0);
 		mAlphaAnimation.setDuration(500);
-		//
 		bottomLaytout.startAnimation(mAlphaAnimation);
 		mAlphaAnimation.setAnimationListener(new AnimationListener() {
 
@@ -297,7 +296,6 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener 
 		if (testState != BEFORTEST) {
 			Toast.makeText(getActivity(), "请在心率识别前选择状态", Toast.LENGTH_SHORT)
 					.show();
-			;
 			return;
 		}
 		state = NORMAL;
