@@ -35,6 +35,15 @@ public class RemoteListFragment extends Fragment {
 	FragmentManager manager ;
 	ExecutorService executorService;
 	
+	private static RemoteListFragment mSelf;
+	
+	public static RemoteListFragment getInstance(){
+		if (mSelf!= null){
+			return mSelf;
+		}else{
+			return mSelf = new RemoteListFragment();
+		}
+	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {

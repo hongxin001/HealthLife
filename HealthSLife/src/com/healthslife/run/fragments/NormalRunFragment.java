@@ -12,16 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class NormalRunFragment extends Fragment implements RunSettingGetable {
-
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View root = inflater.inflate(R.layout.fragment_run_normal, container, false);
 		return root;
 	}
-
+	
 	@Override
 	public RunSetting getRunSetting() {
 		return new RunSetting();
 	}
-
+	
 }

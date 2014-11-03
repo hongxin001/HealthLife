@@ -1,15 +1,19 @@
 package com.healthslife.activitys;
 
-
-
+import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.healthslife.R;
 import com.healthslife.activitys.BaseActivity;
+import com.healthslife.activitys.ExerciseActivity;
+import com.healthslife.fragments.RemoteListFragment;
+import com.healthslife.fragments.SettingFragment;
 
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.RemoteCallbackList;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -43,17 +47,36 @@ public class newMainActivity extends BaseActivity{
 	boolean isOpen;
 	
 	
+	RemoteListFragment mFragmentRemoteList;
+	SettingFragment mFragmentSetting;
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-	                WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏
+	                WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏		Log.e("TAG","lei");
 		setContentView(R.layout.activity_new_main);
 		findDrawerView();
 		setActionBarLayout();
 
 		setNumber();
 		OnClick();	
+	}
+	
+	private RemoteListFragment getRemoteListFragment(){
+		if (mFragmentRemoteList == null){
+			mFragmentRemoteList = RemoteListFragment.getInstance();
+		}
+		return mFragmentRemoteList;
+	}
+	
+	private SettingFragment getSettingFragment(){
+		if (mFragmentSetting == null){
+			mFragmentSetting = SettingFragment.getInstance();
+		}
+		return mFragmentSetting;
 	}
 	
 	public void setActionBarLayout() {
@@ -64,7 +87,7 @@ public class newMainActivity extends BaseActivity{
             actionBar.setDisplayShowTitleEnabled(false);
             actionBar.setDisplayShowCustomEnabled(true);
             LayoutInflater mInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View view = mInflater.inflate(R.layout.vice_actionbar, null);
+            View view = mInflater.inflate(R.layout.new_main_actionbar, null);
             open_menu = (ImageButton) view.findViewById(R.id.sliding_drawer);
             open_menu.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -75,12 +98,9 @@ public class newMainActivity extends BaseActivity{
 					} else {
 						drawer.openDrawer(GravityCompat.START);
 						isOpen = true;
-					}
-					
+					}	
 				}
 			});
-            
-            
             TextView viceText = (TextView) view.findViewById(R.id.vice_text);
             viceText.getPaint().setFakeBoldText(true);
             ActionBar.LayoutParams layout = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -88,15 +108,11 @@ public class newMainActivity extends BaseActivity{
         }
     }
 	
-	
-	
-	private void selectItem(int position) {
-		setTitle("Running");
-		Fragment fragment = null;
+	private void selectItem(Fragment f) {
 		FragmentManager manager = getSupportFragmentManager();
-		manager.beginTransaction().replace(R.id., fragment).commit();
+		manager.beginTransaction().replace(R.id.main_content , f).commit();
 	}
-
+	
 	@Override
 	public void setTitle(CharSequence title) {
 		getActionBar().setTitle(title);
@@ -136,32 +152,51 @@ public class newMainActivity extends BaseActivity{
 		mButtonExercise.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+				setTitle("Running");
+				closeDrawer();
 			}
 		});
 		
 		mButtonHeartRate.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+				setTitle("HeartRate");
+				closeDrawer();
 			}
 		});
 		
 		mButtonHouseConl.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				
+				selectItem(getRemoteListFragment());
+				setTitle("HouseCtrl");
+				closeDrawer();
 			}
 		});
 		mButtonDataCenter.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				setTitle("DataCenter");
+				closeDrawer();
 			}
 		});
 		mButtonSetting.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				selectItem(getSettingFragment());
+				setTitle("Setting");
+				closeDrawer();
 			}
 		});
+	}
+	
+	
+	
+	
+	private void closeDrawer(){
+		if(drawer!= null){
+			drawer.closeDrawer(GravityCompat.START);
+			isOpen = false;
+		}
 	}
 }

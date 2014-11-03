@@ -49,7 +49,6 @@ public class RunFragment extends Fragment {
 		dialog = new MyAlertDialog(getActivity());
 		dialog.setContent(getText(R.string.run_gps_tips));
 		dialog.setPositiveClickListener(new DialogInterface.OnClickListener() {
-
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				Intent intent = new Intent();
