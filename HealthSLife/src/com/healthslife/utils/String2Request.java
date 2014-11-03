@@ -16,7 +16,7 @@ import java.io.UnsupportedEncodingException;
  */
 public class String2Request extends Request<String> {
     private final Response.Listener<String> mListener;
-
+    
 
     /**
      * the parse charset.

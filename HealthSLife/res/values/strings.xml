@@ -94,5 +94,8 @@
     
     <string name="tem">室温：</string>
     <string name="wat">湿度：</string>
+    
+    
+    <string name="error">您的网络可能存在问题，请检查您的网络</string>
 
 </resources>
