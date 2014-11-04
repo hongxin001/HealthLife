@@ -38,5 +38,9 @@ public class BaseApplication extends Application {
 		return mInstance;
 	}
 	
+	private void init(){
+		AppSetting setting = new AppSetting(getApplicationContext());
+		
+	}
 	
 }

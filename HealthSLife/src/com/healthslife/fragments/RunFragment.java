@@ -25,6 +25,7 @@ public class RunFragment extends Fragment {
 	CircleProgress mCircleProgress;
 	//ImageView of Calorie == 1碗米饭
 	ImageView mImageViewTip;
+	private float aim_calories;
 	//layout
 	View view;
 	@Override

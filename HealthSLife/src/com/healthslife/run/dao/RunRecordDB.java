@@ -38,7 +38,7 @@ public class RunRecordDB {
 
 	public float getTotalDistance() {
 		RuntimeExceptionDao<RunRecord, Integer> dao = helper.getRuntimeExceptionDao(RunRecord.class);
-		GenericRawResults<String[]> rawResults = dao.queryRaw("select sum(runDistance) from RunRecord ");
+		GenericRawResults<String[]> rawResults = dao.queryRaw("select sum(runDistance) from RunRecord");
 		float value=0;
 		try {
 			List<String[]>resultList = rawResults.getResults();

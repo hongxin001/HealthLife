@@ -13,6 +13,7 @@ public class AppSetting {
 	private static final String REMOTE_PSW = "REMOTE_PSW";
 	private static final String REMOTE_LISTEN = "REMOTE_LISTEN";
 	
+	private static final String TELNUM = "TELNUM";
 	private static final String RUN = "RUN";
 	private static final String PUSH = "PUSH";
 	private static final String GOLF = "GOLF";
@@ -156,5 +157,16 @@ public class AppSetting {
 		editor.commit();
 	}
 
-
+	public int getTelNUM(){
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		return preferences.getInt(TELNUM, 0);
+	}
+	
+	public void setTelNUM(int telnum){
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		Editor editor = preferences.edit();
+		editor.putInt(TELNUM, telnum);
+		editor.commit();
+	}
+	
 }
