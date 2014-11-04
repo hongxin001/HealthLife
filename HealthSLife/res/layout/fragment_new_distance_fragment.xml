@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/com.healthslife"
+    xmlns:android_custom="http://schemas.android.com/apk/res/com.healthslife"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/distance_layout_l"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <FrameLayout
+        android:id="@+id/fragment_pace_run"
+        android:visibility="visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" 
+        >
+        <com.healthslife.widget.CircleProgress
+            android:id="@+id/fragment_pace_porbar"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android_custom:max="1000"
+            android_custom:roundColor="#ffa7a4"
+            android_custom:roundProgressColor="#f77171"
+            android_custom:roundWidth="20dip"
+            android_custom:textColor="#9A32CD"
+            android_custom:textIsDisplayable="false"
+            android_custom:textSize="18sp" />
+        <RelativeLayout
+            android:layout_width  ="230dp"
+            android:layout_height ="230dp"
+            android:layout_gravity="center"
+            android:background="@drawable/distance_background" >
+            <ImageView
+                android:id="@+id/pace_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/run_pace_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="1127"
+                android:textColor="#ffa7a4"
+                android:textSize="60sp"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/run_pace_txt"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+                <TextView
+                    android:id="@+id/aim_pace_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2000"
+                    android:textColor="#828282"
+                    android:textSize="30sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="pas"
+                    android:textColor="#828282"
+                    android:textSize="30sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+    
+    <FrameLayout
+        android:id="@+id/fragment_distance_run"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true" 
+        >
+        <com.healthslife.widget.CircleProgress
+            android:id="@+id/fragment_distance_porbar"
+            android:layout_width="230dp"
+            android:layout_height="230dp"
+            android_custom:max="1000"
+            android_custom:roundColor="#ffa7a4"
+            android_custom:roundProgressColor="#f77171"
+            android_custom:roundWidth="20dip"
+            android_custom:textColor="#9A32CD"
+            android_custom:textIsDisplayable="false"
+            android_custom:textSize="18sp" />
+        <RelativeLayout
+            android:layout_width  ="230dp"
+            android:layout_height ="230dp"
+            android:layout_gravity="center"
+            android:background="@drawable/distance_background" >
+            <ImageView
+                android:id="@+id/distance_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/run_distance_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="1127"
+                android:textColor="#ffa7a4"
+                android:textSize="60sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/run_distance_txt"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+                <TextView
+                    android:id="@+id/aim_run_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2000"
+                    android:textColor="#828282"
+                    android:textSize="30sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="m"
+                    android:textColor="#828282"
+                    android:textSize="30sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </FrameLayout>
+    <LinearLayout
+        android:id="@+id/relative_fragment_distance_Layout"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_distance_run"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal"
+        android:paddingTop="10dp" >
+        <RelativeLayout
+            android:id="@+id/image_Button_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+            <ImageView
+                android:id="@+id/imageView_111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/distance_button" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView_111"
+                android:layout_centerHorizontal="true" >
+                <TextView
+                    android:id="@+id/distance_bottom_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#999a9b"
+                    android:text="1123"
+                    android:textSize="23sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/distance_bottom_txt"
+                    android:layout_alignBottom="@id/distance_bottom_txt"
+                    android:textColor="#999a9b"
+                    android:textStyle="italic"
+                    android:textSize="15sp"
+                    android:text=" km" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/image_Button_pace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <ImageView
+                android:id="@+id/imageView_222"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/pace_button" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imageView_222"
+                android:layout_centerHorizontal="true" >
+
+                <TextView
+                    android:id="@+id/pace_bottom_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textColor="#999a9b"
+                    android:text="300"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/pace_bottom_txt"
+                    android:layout_alignBottom="@id/pace_bottom_txt"
+                    android:textColor="#999a9b"
+                    android:textStyle="italic"
+                    android:textSize="18sp"
+                    android:text=" pas" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/fragment_distance_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/relative_fragment_distance_Layout"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#999a9b" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_distance_line"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal" >
+        <TextView 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textColor="#999a9b"
+        	android:textSize="20sp"
+        	android:text="Please type in your destination."
+        />
+        <RelativeLayout 
+            android:layout_width="270dp"
+        	android:layout_height="36dp"
+        	android:layout_marginTop="30dp"
+        	android:background="@drawable/shape_black_bord"
+            >
+            <EditText android:id="@+id/editText_distance_run_destance"
+                android:layout_width="match_parent"
+        		android:layout_height="match_parent"
+        		android:background="@null"
+                />
+            <ImageButton 
+                android:id="@+id/ensureSearch_button"
+                android:src="@drawable/search_alt"
+                android:background="@null"
+                android:layout_width="42dp"
+        		android:layout_height="30dp"
+        		android:layout_alignRight="@id/editText_distance_run_destance"
+        		android:paddingRight="8dp"
+        		android:layout_centerVertical="true"
+        	/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>
