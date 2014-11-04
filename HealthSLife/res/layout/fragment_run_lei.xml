@@ -7,17 +7,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="android.support.v4.app.FragmentActivity" >
-    <ImageView 
+<!--     <ImageView 
         android:id="@+id/image_today_aim"
         android:src="@drawable/today_s_aim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"/> -->
+    <TextView 
+        android:id="@+id/image_today_aim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Today's Aim"
+        android:textSize="40dp"
+        />
     <FrameLayout
         android:id="@+id/fragment_fragment_run"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/image_today_aim"
+        android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true" 
         >
         <com.healthslife.widget.CircleProgress
@@ -50,7 +59,7 @@
                 android:layout_centerVertical="true"
                 android:text="127"
                 android:textColor="#fbb947"
-                android:textSize="60sp"
+                android:textSize="55sp"
                 android:textStyle="bold" />
             <LinearLayout 
                 android:layout_below="@id/run_calorie_txt"
@@ -58,19 +67,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:paddingTop="5dp"
+                android:paddingTop="4dp"
                 >
                 <TextView 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#828282"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:text="Aim:"/>
                 <TextView android:id="@+id/aim_run_calorie" 
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                      android:textColor="#828282"
-                    android:textSize="30sp"
+                    android:textSize="25sp"
                     android:text="197"/>
                 </LinearLayout>
         </RelativeLayout>

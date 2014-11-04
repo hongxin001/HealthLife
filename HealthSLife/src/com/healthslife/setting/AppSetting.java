@@ -12,6 +12,12 @@ public class AppSetting {
 	private static final String REMOTE_ACCOUNT = "REMOTE_ACCOUNT";
 	private static final String REMOTE_PSW = "REMOTE_PSW";
 	private static final String REMOTE_LISTEN = "REMOTE_LISTEN";
+	
+	private static final String RUN = "RUN";
+	private static final String PUSH = "PUSH";
+	private static final String GOLF = "GOLF";
+	private static final String WEIGHT = "WEIGHT";
+	private static final String HEIGHT = "HEIGHT";
 	private Context mContext;
 
 	public AppSetting(Context context) {
@@ -89,6 +95,66 @@ public class AppSetting {
 		editor.putBoolean(REMOTE_LISTEN, isOn);
 		editor.commit();
 	}
-	
+
+	public  int getRun() {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		return preferences.getInt(RUN, 0);
+	}
+
+	public void setRun(int run) {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		Editor editor = preferences.edit();
+		editor.putInt(RUN, run);
+		editor.commit();
+	}
+
+	public int getPush() {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		return preferences.getInt(PUSH, 0);
+	}
+
+	public void setPush(int push) {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		Editor editor = preferences.edit();
+		editor.putInt(PUSH,push);
+		editor.commit();
+	}
+
+	public int getGolf() {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		return preferences.getInt(GOLF, 0);
+	}
+
+	public void setGolf(int golf) {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		Editor editor = preferences.edit();
+		editor.putInt(GOLF, golf);
+		editor.commit();
+	}
+
+	public int getWeight() {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		return preferences.getInt(WEIGHT, 0);
+	}
+
+	public void setWeight(int weight) {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		Editor editor = preferences.edit();
+		editor.putInt(WEIGHT, weight);
+		editor.commit();
+	}
+
+	public int getHeight() {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		return preferences.getInt(HEIGHT, 0);
+	}
+
+	public void setHeight(int height) {
+		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
+		Editor editor = preferences.edit();
+		editor.putInt(HEIGHT, height);
+		editor.commit();
+	}
+
 
 }

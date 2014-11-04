@@ -81,7 +81,7 @@ public class LoginActivity extends BaseActivity {
 							Map<String, String> m = new HashMap<String, String>();
 							m.put("telnum", phoneNumber.getText().toString());
 							m.put("token", token);
-							Log.v("token", phoneNumber.getText().toString()+token);
+							Log.v("token",token);
 							return m;
 						}
 					});
