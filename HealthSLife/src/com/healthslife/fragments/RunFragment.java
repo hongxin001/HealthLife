@@ -1,6 +1,7 @@
 package com.healthslife.fragments;
 
 import com.healthslife.R;
+import com.healthslife.setting.AppSetting;
 import com.healthslife.widget.CircleProgress;
 
 import android.os.Bundle;
@@ -26,6 +27,10 @@ public class RunFragment extends Fragment {
 	//ImageView of Calorie == 1碗米饭
 	ImageView mImageViewTip;
 	private float aim_calories;
+	private AppSetting setting;
+	private int num1;
+	private int num2;
+	private int num3;
 	//layout
 	View view;
 	@Override
@@ -38,6 +43,14 @@ public class RunFragment extends Fragment {
 		findView();
 		CompleteListener();
 		return view;
+	}
+	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		int calorie = setting.getRun();
+		//mTextViewBurnt.setText(String.valueOf());
 	}
 	/**
 	 * sliding percent(%) of Circle with animation

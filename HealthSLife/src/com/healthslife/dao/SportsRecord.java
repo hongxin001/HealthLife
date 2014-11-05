@@ -5,6 +5,8 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
 public class SportsRecord {
+	@DatabaseField(generatedId=true)
+	private int id;
 	@DatabaseField
 	private int userid;
 	@DatabaseField
@@ -55,6 +57,23 @@ public class SportsRecord {
 	public void setLasttime(long lasttime) {
 		this.lasttime = lasttime;
 	}
+	
+	
+	public SportsRecord() {
+		// TODO Auto-generated constructor stub
+	}
+	public SportsRecord(int userid, String kind, int num, long createtime,
+			long starttime, long lasttime) {
+		super();
+		this.userid = userid;
+		this.kind = kind;
+		this.num = num;
+		this.createtime = createtime;
+		this.starttime = starttime;
+		this.lasttime = lasttime;
+	}
+	
+	
 	
 	
 }

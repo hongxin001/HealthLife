@@ -103,6 +103,7 @@ public class NewDistanceFragment extends Fragment {
 		mCircledistance.setText(number);
 		mTextViewDistance.setText(number);
 	}
+	
 	private void setPaceNumber(){
 		
 	}

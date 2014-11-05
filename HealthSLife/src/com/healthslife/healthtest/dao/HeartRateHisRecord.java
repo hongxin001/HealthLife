@@ -15,6 +15,7 @@ public class HeartRateHisRecord {
 	private int heartRate;
 
 	public HeartRateHisRecord() {
+
 	}
 
 	public HeartRateHisRecord(String date, int state, int heartRate) {

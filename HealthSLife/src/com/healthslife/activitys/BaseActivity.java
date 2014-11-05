@@ -5,8 +5,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.healthslife.R;
 import com.healthslife.utils.RequestManager;
-
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
@@ -40,11 +38,8 @@ public class BaseActivity extends FragmentActivity {
 	        return new Response.ErrorListener() {
 	            @Override
 	            public void onErrorResponse(VolleyError error) {
-	                //Toast.makeText(activity, error.getMessage(), Toast.LENGTH_LONG).show();
 	                Toast.makeText(getApplicationContext(), R.string.error,Toast.LENGTH_LONG).show();
 	            }
-
-
 	        };
 	    }
 	
