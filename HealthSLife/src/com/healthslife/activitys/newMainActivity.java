@@ -1,11 +1,11 @@
 package com.healthslife.activitys;
 
-import com.amap.api.maps.model.BitmapDescriptorFactory;
+
 import com.healthslife.R;
 import com.healthslife.activitys.BaseActivity;
-import com.healthslife.activitys.ExerciseActivity;
 import com.healthslife.fragments.HeartRateFragment;
 import com.healthslife.fragments.RemoteListFragment;
+import com.healthslife.fragments.RunFragment;
 import com.healthslife.fragments.SettingFragment;
 
 import android.app.ActionBar;
@@ -46,19 +46,16 @@ public class newMainActivity extends BaseActivity{
 	 */
 	ImageButton open_menu;
 	boolean isOpen;
-	
-	
+
 	RemoteListFragment mFragmentRemoteList;
 	SettingFragment mFragmentSetting;
-	
-	
-	
 	
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-	                WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏	 	Log.e("TAG","lei");
+	                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		// 去掉信息栏	 	Log.e("TAG","lei");
 		setContentView(R.layout.activity_new_main);
 		
 		findDrawerView();
@@ -76,8 +73,7 @@ public class newMainActivity extends BaseActivity{
 	
 	private void setDefaultFragment(){
 		setTitle("Running");
-		selectItem();
-		
+		selectItem(RunFragment.getInstance());
 	}
 	private RemoteListFragment getRemoteListFragment(){
 		if (mFragmentRemoteList == null){
@@ -162,6 +158,7 @@ public class newMainActivity extends BaseActivity{
 			@Override
 			public void onClick(View v) {
 				setTitle("Running");
+				selectItem(RunFragment.getInstance());
 				closeDrawer();
 			}
 		});
