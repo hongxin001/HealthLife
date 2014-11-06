@@ -22,7 +22,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class NewDistanceFragment extends Fragment {
-
+	public static NewDistanceFragment self;
+	public static NewDistanceFragment getInstance(){
+		if (self == null) {
+			return self = new NewDistanceFragment();
+		
+		}
+		return self;
+	}
 	// layout
 	View view;
 
@@ -68,7 +75,7 @@ public class NewDistanceFragment extends Fragment {
 			return null;
 		}
 		view = inflater.inflate(R.layout.fragment_new_distance_fragment,
-				container);
+				null,false);
 		findView();
 		underCircleTwoButtonOnClick();
 		SearchOnClick();

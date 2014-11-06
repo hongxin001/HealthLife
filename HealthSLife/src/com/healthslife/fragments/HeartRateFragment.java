@@ -69,7 +69,9 @@ public class HeartRateFragment extends Fragment {
 		reLayout = (RelativeLayout) view.findViewById(R.id.fragment_heart_rate_l_relativelayout_grid);
 	}
 	
-	
+	/**
+	 * a invalid heart peek invoke it to update UI
+	 */
 	public void haveHeartRatePeek(){
 		handler.sendEmptyMessage(0);
 	}
