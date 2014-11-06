@@ -32,6 +32,7 @@ import com.healthslife.BaseFragmentActivity;
 import com.healthslife.R;
 import com.healthslife.adapters.NavigationAdapter;
 import com.healthslife.adapters.NavigationAdapter.DataHolder;
+import com.healthslife.fragments.NewDistanceFragment;
 import com.healthslife.fragments.RControlFragment;
 import com.healthslife.fragments.HealthTestFragment;
 import com.healthslife.fragments.InviteFragment;
@@ -111,7 +112,7 @@ public class MainActivity extends BaseFragmentActivity {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new RunFragment();
+			fragment = new NewDistanceFragment();
 			break;
 		case 1:
 			fragment = new HealthTestFragment();

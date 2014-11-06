@@ -47,6 +47,28 @@
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
 
+    <!-- 使用导航功能所需权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.BAIDU_LOCATION_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCES_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
@@ -61,32 +83,36 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="67f2ae9c3e245e457705aeb0dc82eaec" />
-           <meta-data
+        <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="tiDla8kUbacL1XwyGWY3C5m1" />
-        
-		<activity android:name="com.healthslife.activitys.NaviRunActivity"  
-			android:configChanges="orientation|screenSize|keyboard|keyboardHidden">
-		</activity> 
+            android:value="g7roxmwdB8dUQwTrdOpuLcgF" />
+
+        <activity
+            android:name="com.healthslife.activitys.NaviRunActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden" >
+        </activity>
         <activity
             android:name="com.healthslife.activitys.MainActivity"
             android:label="@string/app_name" >
-            
         </activity>
 
+        <service
+            android:name="com.baidu.navi.location.f"
+            android:enabled="true" />
         <service android:name="com.dm.location.DMLocationService" >
         </service>
-        <service android:name="com.healthslife.services.UDPservice"></service>
-        <service android:name="com.healthslife.services.UDPListenerService"></service>
-        
-        <receiver android:name="com.healthslife.receiver.UDPReceiver">
-            <intent-filter >
-                <action android:name="android.intent.action.MY_BROADCAST"/>
-                <category android:name="android.intent.category.DEFAULT"/>
+        <service android:name="com.healthslife.services.UDPservice" >
+        </service>
+        <service android:name="com.healthslife.services.UDPListenerService" >
+        </service>
+
+        <receiver android:name="com.healthslife.receiver.UDPReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.MY_BROADCAST" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-            
         </receiver>
-        
 
         <activity android:name="com.healthslife.activitys.NormalRunActivity" >
         </activity>
@@ -118,26 +144,31 @@
         </activity>
         <activity android:name=".healthtest.ECGHisActivity" >
         </activity>
-        
-        <activity android:name="com.healthslife.activitys.SplashActivity">
-               <intent-filter>
+        <activity android:name="com.healthslife.activitys.SplashActivity" >
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.healthslife.activitys.LoginActivity"> 
-            
+        <activity android:name="com.healthslife.activitys.LoginActivity" >
         </activity>
-        <activity android:name="com.healthslife.activitys.UserStateActivity"/>   
-        <activity android:name="com.healthslife.activitys.HeartRateActivity"/>
-        <activity android:name="com.healthslife.activitys.ExerciseActivity"/>
-        <activity android:name="com.healthslife.activitys.HouseCtrlActivity"/>
-        <activity android:name="com.healthslife.activitys.DataCenterActivity"/>
-        <activity android:name="com.healthslife.activitys.SettingActivity"/>
-        <activity android:name="com.healthslife.activitys.newMainActivity"/>
-        <service android:name="com.baidu.location.f" android:enabled="true" android:process=":remote">
-</service>
+        <activity android:name="com.healthslife.activitys.UserStateActivity" />
+        <activity android:name="com.healthslife.activitys.HeartRateActivity" />
+        <activity android:name="com.healthslife.activitys.ExerciseActivity" />
+        <activity android:name="com.healthslife.activitys.HouseCtrlActivity" />
+        <activity android:name="com.healthslife.activitys.DataCenterActivity" />
+        <activity android:name="com.healthslife.activitys.SettingActivity" />
+        <activity android:name="com.healthslife.activitys.newMainActivity" />
+        <activity
+            android:name="com.healthslife.activitys.BNavigatorActivity"
+            android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
     </application>
 
 </manifest>
