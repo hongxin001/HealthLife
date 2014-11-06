@@ -55,7 +55,6 @@ public class newMainActivity extends BaseActivity{
 		super.onCreate(bundle);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 	                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		// 去掉信息栏	 	Log.e("TAG","lei");
 		setContentView(R.layout.activity_new_main);
 		
 		findDrawerView();
@@ -115,8 +114,6 @@ public class newMainActivity extends BaseActivity{
             actionBar.setCustomView(view, layout);
         }
     }
-	
-
 	
 	@Override
 	public void setTitle(CharSequence title) {

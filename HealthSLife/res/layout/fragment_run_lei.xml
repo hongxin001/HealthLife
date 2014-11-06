@@ -7,20 +7,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="android.support.v4.app.FragmentActivity" >
-<!--     <ImageView 
-    android:layout_height="match_parent" >
-    <ImageView 
-        android:id="@+id/image_today_aim"
-        android:src="@drawable/today_s_aim"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"/> -->
     <TextView 
         android:id="@+id/image_today_aim"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:text="Today's Aim"
+        android:textColor="#999a9b"
         android:textSize="40dp"
         />
     <FrameLayout
@@ -90,7 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:paddingTop="10dp"
+        android:paddingTop="40dp"
         android:layout_below="@id/fragment_fragment_run">
         <ImageView android:id="@+id/image_view_tip"
             android:layout_width="wrap_content"
@@ -102,7 +96,7 @@
         android:layout_below="@id/relative_fragment_run_Layout"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         />
