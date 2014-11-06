@@ -157,15 +157,15 @@ public class AppSetting {
 		editor.commit();
 	}
 
-	public int getTelNUM(){
+	public String getTelNUM(){
 		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
-		return preferences.getInt(TELNUM, 0);
+		return preferences.getString(TELNUM, "");
 	}
 	
-	public void setTelNUM(int telnum){
+	public void setTelNUM(String telnum){
 		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
 		Editor editor = preferences.edit();
-		editor.putInt(TELNUM, telnum);
+		editor.putString(TELNUM, telnum);
 		editor.commit();
 	}
 	

@@ -8,6 +8,7 @@ import com.android.volley.Response;
 import com.healthslife.R;
 import com.healthslife.activitys.BaseActivity;
 import com.healthslife.activitys.newMainActivity;
+import com.healthslife.setting.AppSetting;
 import com.healthslife.utils.Configs;
 import com.healthslife.utils.String2Request;
 
@@ -29,7 +30,7 @@ public class LoginActivity extends BaseActivity {
 	TextView getIdentify;
 	Button confirButton;
 	private String token;
-
+	private AppSetting setting;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class LoginActivity extends BaseActivity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏
 		setContentView(R.layout.activity_login);
 		token = "";
+		setting = new AppSetting(this);
 		findView();
 		onClick();
 	}
@@ -115,6 +117,7 @@ public class LoginActivity extends BaseActivity {
 			public void onResponse(String s) {
 				Log.v("message", s);
 				if (s.equals("1")) {
+					setting.setTelNUM(phoneNumber.getText().toString());
 					gotoMainActivity();
 				} else {
 					Toast.makeText(getApplicationContext(), "token error",
