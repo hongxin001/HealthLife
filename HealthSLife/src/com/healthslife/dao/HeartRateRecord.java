@@ -4,7 +4,7 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
-class HeartRateRecord {
+public class HeartRateRecord {
 	@DatabaseField(generatedId=true)
 	private int id;
 	@DatabaseField
