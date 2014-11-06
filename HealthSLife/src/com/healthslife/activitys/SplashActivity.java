@@ -39,7 +39,7 @@ public class SplashActivity extends BaseActivity {
 					// editor.commit();
 					if (setting.getTelNUM().equals("")) {
 						Intent intent = new Intent(SplashActivity.this,
-								LoginActivity.class);
+								newMainActivity.class);
 						startActivity(intent);
 						finish();
 						overridePendingTransition(R.anim.in_from_right,

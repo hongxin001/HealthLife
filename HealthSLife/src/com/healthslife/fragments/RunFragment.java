@@ -33,22 +33,32 @@ public class RunFragment extends Fragment {
 	private int num3;
 	//layout
 	View view;
+	
+	public static RunFragment self;
+	public static RunFragment getInstance(){
+		if (self == null){
+			return self = new RunFragment();
+		}
+		return self;
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		if (container == null) {
 	            return null;
 	    }
-		view = inflater.inflate(R.layout.fragment_run_lei, container);
+		view = inflater.inflate(R.layout.fragment_run_lei, null,false);
 		findView();
 		CompleteListener();
 		return view;
 	}
 	
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setting = new AppSetting(getActivity());
 		int calorie = setting.getRun();
 		//mTextViewBurnt.setText(String.valueOf());
 	}

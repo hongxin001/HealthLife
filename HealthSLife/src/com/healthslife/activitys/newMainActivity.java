@@ -1,10 +1,11 @@
 package com.healthslife.activitys;
 
-import com.amap.api.maps.model.BitmapDescriptorFactory;
+
 import com.healthslife.R;
 import com.healthslife.activitys.BaseActivity;
-import com.healthslife.activitys.ExerciseActivity;
+import com.healthslife.fragments.HeartRateFragment;
 import com.healthslife.fragments.RemoteListFragment;
+import com.healthslife.fragments.RunFragment;
 import com.healthslife.fragments.SettingFragment;
 
 import android.app.ActionBar;
@@ -45,40 +46,47 @@ public class newMainActivity extends BaseActivity{
 	 */
 	ImageButton open_menu;
 	boolean isOpen;
-	
-	
+
 	RemoteListFragment mFragmentRemoteList;
 	SettingFragment mFragmentSetting;
 	
-	
-	
 	@Override
-	protected void onCreate(Bundle arg0) {
-		super.onCreate(arg0);
+	protected void onCreate(Bundle bundle) {
+		super.onCreate(bundle);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-	                WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏		Log.e("TAG","lei");
+	                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		// 去掉信息栏	 	Log.e("TAG","lei");
 		setContentView(R.layout.activity_new_main);
+		
 		findDrawerView();
 		setActionBarLayout();
-
 		setNumber();
+		
+		setDefaultFragment();
 		OnClick();	
 	}
 	
+	private void selectItem(Fragment f) {
+		FragmentManager manager = getSupportFragmentManager();
+		manager.beginTransaction().replace(R.id.main_content , f).commit();
+	}
+	
+	private void setDefaultFragment(){
+		setTitle("Running");
+		selectItem(RunFragment.getInstance());
+	}
 	private RemoteListFragment getRemoteListFragment(){
 		if (mFragmentRemoteList == null){
 			mFragmentRemoteList = RemoteListFragment.getInstance();
 		}
 		return mFragmentRemoteList;
 	}
-	
 	private SettingFragment getSettingFragment(){
 		if (mFragmentSetting == null){
 			mFragmentSetting = SettingFragment.getInstance();
 		}
 		return mFragmentSetting;
 	}
-	
 	public void setActionBarLayout() {
         ActionBar actionBar = getActionBar();
         if (null != actionBar) {
@@ -108,10 +116,7 @@ public class newMainActivity extends BaseActivity{
         }
     }
 	
-	private void selectItem(Fragment f) {
-		FragmentManager manager = getSupportFragmentManager();
-		manager.beginTransaction().replace(R.id.main_content , f).commit();
-	}
+
 	
 	@Override
 	public void setTitle(CharSequence title) {
@@ -153,6 +158,7 @@ public class newMainActivity extends BaseActivity{
 			@Override
 			public void onClick(View v) {
 				setTitle("Running");
+				selectItem(RunFragment.getInstance());
 				closeDrawer();
 			}
 		});
@@ -161,6 +167,7 @@ public class newMainActivity extends BaseActivity{
 			@Override
 			public void onClick(View v) {
 				setTitle("HeartRate");
+				selectItem(HeartRateFragment.getInstance());
 				closeDrawer();
 			}
 		});
