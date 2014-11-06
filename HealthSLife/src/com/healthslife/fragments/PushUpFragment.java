@@ -11,6 +11,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class PushUpFragment extends Fragment {
+	public static PushUpFragment self;
+	public static PushUpFragment getInstance(){
+		if (self == null) {
+			return self = new PushUpFragment();
+		}
+		return self;
+	}
 	//Layout
 	View view;
 	//Number of Push Up Aim need to do
@@ -22,7 +29,7 @@ public class PushUpFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.fragment_push_up, container);
+		view = inflater.inflate(R.layout.fragment_push_up, null ,false);
 		findView();
 		setOnClickListener();
 		return view;
