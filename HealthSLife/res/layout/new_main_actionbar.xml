@@ -10,7 +10,8 @@
         android:paddingRight="15dp"
         android:layout_alignParentLeft="true"
         android:src="@drawable/menu"
-        android:layout_width="wrap_content"
+        android:layout_width="50dp"
+        android:scaleType="centerInside"
         android:layout_height="match_parent"
         android:background="@drawable/option_actionbar_back_shadow"/>
     <View android:id="@+id/view_white_line_1"

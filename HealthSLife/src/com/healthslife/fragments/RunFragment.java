@@ -53,6 +53,7 @@ public class RunFragment extends Fragment {
 		}
 		view = inflater.inflate(R.layout.fragment_run_lei, null, false);
 		findView();
+		onClick();
 		CompleteListener();
 		return view;
 	}
@@ -64,7 +65,7 @@ public class RunFragment extends Fragment {
 		setting = new AppSetting(getActivity());
 		int calorie = setting.getRun();
 		// mTextViewBurnt.setText(String.valueOf());
-		onClick();
+	
 
 	}
 
