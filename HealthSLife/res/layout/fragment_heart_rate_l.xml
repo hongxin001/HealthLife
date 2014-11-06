@@ -40,7 +40,7 @@
         </RelativeLayout>
     </FrameLayout>
     <RelativeLayout android:id="@+id/fragment_heart_rate_l_relativelayout_grid"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="90dp"
         >
 		<ImageView android:id="@+id/fragment_heart_rate_l_grid"
@@ -48,6 +48,12 @@
 		    android:layout_height="wrap_content"
 		    android:src="@drawable/hbr_image"
 		    android:background="@null"/>
+		<ImageView android:id="@+id/heart_demo"
+		    android:layout_width="wrap_content"
+		    android:layout_height="70dp"
+		    android:layout_centerVertical="true"
+		    android:src="@drawable/rate_src"
+		    />
     </RelativeLayout>
     
     <ImageButton
