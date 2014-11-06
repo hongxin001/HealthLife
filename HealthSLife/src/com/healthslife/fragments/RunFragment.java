@@ -65,8 +65,6 @@ public class RunFragment extends Fragment {
 		setting = new AppSetting(getActivity());
 		int calorie = setting.getRun();
 		// mTextViewBurnt.setText(String.valueOf());
-	
-
 	}
 
 	private void onClick() {
