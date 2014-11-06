@@ -46,7 +46,7 @@ public class HeartRateFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.fragment_heart_rate_l, container);
+		view = inflater.inflate(R.layout.fragment_heart_rate_l, null);
 		handler = new HeartRateHandler();
 		findView();
 		setOnClick();
