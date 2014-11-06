@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -61,6 +62,16 @@ public class RunFragment extends Fragment {
 		setting = new AppSetting(getActivity());
 		int calorie = setting.getRun();
 		//mTextViewBurnt.setText(String.valueOf());
+		
+		
+		mImageRun.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	}
 	/**
 	 * sliding percent(%) of Circle with animation
@@ -112,4 +123,6 @@ public class RunFragment extends Fragment {
 		mCircleProgress = (CircleProgress) view.findViewById(R.id.fragment_run_porbar);
 		mImageViewTip = (ImageView) view.findViewById(R.id.image_view_tip);
 	}
+	
+	
 }
