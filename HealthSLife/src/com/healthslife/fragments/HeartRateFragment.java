@@ -34,6 +34,14 @@ public class HeartRateFragment extends Fragment {
 	TimerTask timerTask;
 	Timer timer;
 	Interpolator interpolator;
+	public static HeartRateFragment self;
+	public static HeartRateFragment getInstance(){
+		if (self == null){
+			return self = new HeartRateFragment();
+			
+		}
+		return self;
+	}
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -4,6 +4,7 @@ import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.healthslife.R;
 import com.healthslife.activitys.BaseActivity;
 import com.healthslife.activitys.ExerciseActivity;
+import com.healthslife.fragments.HeartRateFragment;
 import com.healthslife.fragments.RemoteListFragment;
 import com.healthslife.fragments.SettingFragment;
 
@@ -52,11 +53,12 @@ public class newMainActivity extends BaseActivity{
 	
 	
 	
+	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-	                WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏		Log.e("TAG","lei");
+	                WindowManager.LayoutParams.FLAG_FULLSCREEN);// 去掉信息栏	 	Log.e("TAG","lei");
 		setContentView(R.layout.activity_new_main);
 		findDrawerView();
 		setActionBarLayout();
@@ -161,6 +163,7 @@ public class newMainActivity extends BaseActivity{
 			@Override
 			public void onClick(View v) {
 				setTitle("HeartRate");
+				selectItem(HeartRateFragment.getInstance());
 				closeDrawer();
 			}
 		});
