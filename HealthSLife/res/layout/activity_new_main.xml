@@ -103,7 +103,6 @@
                     android:layout_height="50dp"
                     android:src="@drawable/exercise" />
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/heartrate"
                 android:layout_width="match_parent"

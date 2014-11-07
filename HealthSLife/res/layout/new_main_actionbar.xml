@@ -6,11 +6,11 @@
     <ImageButton
         android:layout_centerVertical="true"
         android:id="@+id/sliding_drawer"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
         android:layout_alignParentLeft="true"
         android:src="@drawable/menu"
-        android:layout_width="50dp"
+        android:layout_width="40dp"
         android:scaleType="centerInside"
         android:layout_height="match_parent"
         android:background="@drawable/option_actionbar_back_shadow"/>
@@ -20,19 +20,19 @@
         android:layout_toRightOf="@id/sliding_drawer"
         android:layout_centerVertical="true"
         android:background="#fff"/>
-        
     <TextView
         android:id="@+id/vice_text"
         android:layout_toRightOf="@id/view_white_line_1"
         android:textColor="#fff"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:layout_centerVertical="true"
-        android:paddingLeft="10dp"
+        android:paddingLeft="13dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Running" />
-<!--      <ImageButton
+      <ImageButton
         android:layout_centerVertical="true"
+        android:visibility="gone"
         android:id="@+id/heart_rate_camera"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
@@ -40,5 +40,5 @@
         android:src="@drawable/carmera"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="@drawable/option_actionbar_back_shadow"/>-->    
+        android:background="@drawable/option_actionbar_back_shadow"/>    
 </RelativeLayout>

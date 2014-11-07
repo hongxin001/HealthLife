@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.RemoteCallbackList;
 import android.support.v4.app.Fragment;
@@ -109,11 +110,23 @@ public class newMainActivity extends BaseActivity{
 				}
 			});
             TextView viceText = (TextView) view.findViewById(R.id.vice_text);
+            setFONT(viceText,"S");
             viceText.getPaint().setFakeBoldText(true);
             ActionBar.LayoutParams layout = new ActionBar.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             actionBar.setCustomView(view, layout);
         }
     }
+	
+	public void setFONT(TextView t,String s){
+		if (s.equals("S")) {
+			//"S"
+			t.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/SEGOE.TTF"));
+		}else{
+			//"H"
+			t.setTypeface(Typeface.createFromAsset(getAssets(), "fonts/HATTEN.TTF"));	
+		}
+		
+	}
 	
 	@Override
 	public void setTitle(CharSequence title) {
