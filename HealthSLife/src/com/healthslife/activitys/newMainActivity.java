@@ -3,6 +3,7 @@ package com.healthslife.activitys;
 
 import com.healthslife.R;
 import com.healthslife.activitys.BaseActivity;
+import com.healthslife.control.fragment.LightControlFragment;
 import com.healthslife.fragments.HeartRateFragment;
 import com.healthslife.fragments.RemoteListFragment;
 import com.healthslife.fragments.RunFragment;
@@ -185,7 +186,8 @@ public class newMainActivity extends BaseActivity{
 		mButtonHouseConl.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				selectItem(getRemoteListFragment());
+//				selectItem(getRemoteListFragment());
+				selectItem(new LightControlFragment());
 				setTitle("HouseCtrl");
 				closeDrawer();
 			}

@@ -33,7 +33,7 @@ public class ImgAnalysis implements Callback {
 	public boolean startCaptureImg() {
 		if (mCamera == null) {
 			Log.v("imganalysis", "mCamera == null");
-			// surfaceCreated(mSurfaceHolder);
+			surfaceCreated(mSurfaceHolder);
 			return false;
 		} else {
 			try {
@@ -128,7 +128,7 @@ public class ImgAnalysis implements Callback {
 				parameters.setPictureSize(1024, 768);
 				mCamera.setParameters(parameters);
 				/* 打开预览画面 */
-				// mCamera.startPreview();
+				//mCamera.startPreview();
 			} catch (Exception e) {
 				e.printStackTrace();
 				Log.v("CameraError", "CameraError:" + e.getMessage());
