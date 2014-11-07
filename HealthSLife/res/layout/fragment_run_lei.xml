@@ -14,7 +14,6 @@
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"
         android:text="Today's Aim"
-       
         android:textColor="#999a9b"
         android:textSize="40dp"
         />
@@ -23,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/image_today_aim"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true" 
         >
         <com.healthslife.widget.CircleProgress
@@ -54,16 +53,17 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:paddingTop="15dp"
                 android:text="127"
                 android:textColor="#fbb947"
-                android:textSize="55sp"
+                android:textSize="75sp"
                 android:textStyle="bold" />
             <LinearLayout 
                 android:layout_below="@id/run_calorie_txt"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-8dp"
+                android:layout_marginTop="-20dp"
                 android:layout_centerHorizontal="true"
                 >
                 <TextView
@@ -71,14 +71,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#828282"
-                    android:textSize="21sp"
+                    android:textSize="16sp"
                     android:text="Aim:"/>
                 <TextView android:id="@+id/aim_run_calorie" 
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                   
                     android:textColor="#828282"
-                    android:textSize="21sp"
+                    android:textSize="16sp"
                     android:text="197"/>
                 </LinearLayout>
         </RelativeLayout>
@@ -87,7 +86,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:paddingTop="55dp"
+        android:paddingTop="27dp"
         android:layout_below="@id/fragment_fragment_run">
         <ImageView android:id="@+id/image_view_tip"
             android:layout_width="120dp"
