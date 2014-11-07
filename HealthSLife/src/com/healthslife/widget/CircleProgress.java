@@ -199,7 +199,7 @@ public class CircleProgress extends View {
 	}
 
 	class MyThread extends Thread {
-		int startPercent;
+		int startPercent; 
 		int endPercent;
 		boolean isRunAble = true;
 

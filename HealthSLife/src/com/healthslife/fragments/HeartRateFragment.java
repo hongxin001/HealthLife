@@ -33,7 +33,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HeartRateFragment extends Fragment {
+public class HeartRateFragment extends Fragment implements View.OnClickListener{
 
 	private static final int BEFORTEST = 0;
 	private static final int TESTING = 1;
@@ -85,31 +85,33 @@ public class HeartRateFragment extends Fragment {
 		view = inflater.inflate(R.layout.fragment_heart_rate_l, null);
 		handler = new HeartRateHandler();
 		findView();
-		setOnClick();
+//		setOnClick();
 
 		mImgAnalysis = new ImgAnalysis(inflater.getContext(),
-				(RelativeLayout) view.findViewById(R.id.blank));
+				(RelativeLayout) view.findViewById(R.id.new_blank));
 		mImgAnalysis.setImgCaptureListener(mImgCaptureListener);
 		mTimer = new Timer();
 		return view;
 	}
 
-	private void setOnClick() {
-		mImageButtonStart.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				mImageButtonStart.setImageDrawable(getResources().getDrawable(
-						R.drawable.btn_start_button_selected));
-			}
-		});
-	}
+//	private void setOnClick() {
+//		mImageButtonStart.setOnClickListener(new View.OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				mImageButtonStart.setImageDrawable(getResources().getDrawable(
+//						R.drawable.btn_start_button_selected));
+//				startTest();
+//			}
+//		});
+//	}
 
 	private void findView() {
 		mTextViewNumber = (TextView) view.findViewById(R.id.heart_rate_txt);
 		mCircleProgress = (CircleProgress) view
 				.findViewById(R.id.fragment_heart_rate_porbar);
-		mImageButtonStart = (ImageButton) view
-				.findViewById(R.id.fragment_heart_rate_l_start);
+		mCircleProgress.setOnClickListener(this);
+//		mImageButtonStart = (ImageButton) view
+//				.findViewById(R.id.fragment_heart_rate_l_start);
 		reLayout = (RelativeLayout) view
 				.findViewById(R.id.fragment_heart_rate_l_relativelayout_grid);
 	}
@@ -180,21 +182,27 @@ public class HeartRateFragment extends Fragment {
 			return;
 		}
 		int pairFirstPeak = findPeaks(lastPeakIndex);
+		Log.v("found","................................................................"+String.valueOf(pairFirstPeak));
 		if (pairFirstPeak == -1) {
 			return;
 		}
 		int pairSecondPeak = findPeaks(pairFirstPeak);
+		Log.v("found","................................................................"+String.valueOf(pairSecondPeak));
 		if (pairSecondPeak == -1) {
 			return;
 		}
 		lastPeakIndex = pairSecondPeak;
 		long temp = dataList.get(pairSecondPeak).time
 				- dataList.get(pairFirstPeak).time;
-		if (temp < 500 || temp > 1500)
-			return;
+//		if (temp < 500 || temp > 1500){
+//			Log.v("miss", String.valueOf(temp));
+//			return;
+//		}
 		peakPairs[peakPairsIndex][0] = pairFirstPeak;
 		peakPairs[peakPairsIndex][1] = pairSecondPeak;
 		peakPairsIndex++;
+		Log.v("peak found","................................................................");
+		//haveHeartRatePeek();
 		computeHeartRate();
 		mCircleProgress.slideToProgress(peakPairsIndex * 100);
 		if (peakPairsIndex >= 10) {
@@ -261,6 +269,10 @@ public class HeartRateFragment extends Fragment {
 		}
 		float temp = (60000f / (float) totalTime) * (float) peakPairsIndex;
 		averageHeartRate = (int) temp;
+		
+		Log.v("average", String.valueOf(averageHeartRate));
+		
+		
 		mTextViewNumber.setText(averageHeartRate + "");
 	}
 
@@ -277,5 +289,27 @@ public class HeartRateFragment extends Fragment {
 	public void saveData() {
 		HeartRateDB mDB = new HeartRateDB(getActivity());
 		mDB.add(new HeartRateRecord(averageHeartRate, currentTime));
+	}
+	
+	@Override
+	public void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		mImgAnalysis.releaseCamera();
+	}
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		switch (v.getId()) {
+		case R.id.fragment_heart_rate_porbar:
+			startTest();
+			break;
+
+		default:
+		}
+		
+		
+		
 	}
 }
