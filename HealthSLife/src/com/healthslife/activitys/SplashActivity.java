@@ -63,7 +63,7 @@ public class SplashActivity extends BaseActivity {
 		super.onStart();
 		sp = getSharedPreferences(LoginFirstPreference, MODE_PRIVATE);
 		sp.getBoolean(LoginFirst, true);
-		handler.sendEmptyMessageDelayed(0, 2000);
+		handler.sendEmptyMessageDelayed(0, 1000);
 	}
 
 }

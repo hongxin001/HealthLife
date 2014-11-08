@@ -160,10 +160,10 @@
         <activity android:name="com.healthslife.activitys.DataCenterActivity" />
         <activity android:name="com.healthslife.activitys.SettingActivity" />
         <activity android:name="com.healthslife.activitys.newMainActivity" />
+        <activity android:name="com.healthslife.activitys.HeartRateResultActivity" />
         <activity
             android:name="com.healthslife.activitys.BNavigatorActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
-
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"

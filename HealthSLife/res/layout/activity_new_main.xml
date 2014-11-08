@@ -27,29 +27,31 @@
             <com.healthslife.widget.roundedimageview.RoundedImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/rounded_imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="70dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/head_portrait"
-                app:corner_radius="50dp" />
+                app:corner_radius="50dp"/>
            <TextView
                 android:id="@+id/telephone_number"
                 android:layout_width="wrap_content"
                 android:layout_below="@id/rounded_imageView"
                 android:layout_centerHorizontal="true"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="13006180386"
                 android:textColor="#fff"
-                android:textSize="27sp"
-                android:textStyle="bold" />
+                android:textSize="14sp"
+                 />
             <LinearLayout
                 android:id="@+id/carori_heartrate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/telephone_number"
-                android:orientation="horizontal" 
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp" 
                 android:layout_marginBottom="30dp"
                 >
                 <LinearLayout
@@ -59,7 +61,7 @@
                     android:gravity="center"
                     android:orientation="vertical" >
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:contentDescription="calorie"
                         android:src="@drawable/calorie" />
@@ -79,7 +81,7 @@
                     android:gravity="center"
                     android:orientation="vertical" >
                     <ImageView
-                        android:layout_width="wrap_content"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:contentDescription="heartRate"
                         android:src="@drawable/heartrate" />
@@ -103,7 +105,6 @@
                     android:layout_height="50dp"
                     android:src="@drawable/exercise" />
             </RelativeLayout>
-
             <RelativeLayout
                 android:id="@+id/heartrate"
                 android:layout_width="match_parent"

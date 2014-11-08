@@ -1,6 +1,7 @@
 package com.healthslife.fragments;
 
 import com.healthslife.R;
+import com.healthslife.activitys.newMainActivity;
 import com.healthslife.setting.AppSetting;
 import com.healthslife.widget.CircleProgress;
 
@@ -147,6 +148,16 @@ public class RunFragment extends Fragment {
 		mCircleProgress = (CircleProgress) view
 				.findViewById(R.id.fragment_run_porbar);
 		mImageViewTip = (ImageView) view.findViewById(R.id.image_view_tip);
+		TextView t = (TextView) view.findViewById(R.id.image_today_aim);
+		getMainActivity().setFONT(t, "S");
+		getMainActivity().setFONT(mTextViewBurnt, "H");
+		getMainActivity().setFONT(mTextViewAim, "S");
+		TextView AIM = (TextView) view.findViewById(R.id.text_view_hyden);
+		getMainActivity().setFONT(AIM, "S");
+		getMainActivity().setFONT(mTextViewAim, "S");
 	}
-
+	
+	public newMainActivity getMainActivity(){
+		return (newMainActivity)getActivity();
+	}
 }
