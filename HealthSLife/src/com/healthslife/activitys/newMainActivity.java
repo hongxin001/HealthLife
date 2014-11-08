@@ -186,8 +186,8 @@ public class newMainActivity extends BaseActivity{
 		mButtonHouseConl.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-//				selectItem(getRemoteListFragment());
-				selectItem(new LightControlFragment());
+				selectItem(getRemoteListFragment());
+//				selectItem(new LightControlFragment());
 				setTitle("HouseCtrl");
 				closeDrawer();
 			}

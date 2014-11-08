@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.TimerTask;
 
 import com.healthslife.R;
+import com.healthslife.activitys.HeartRateResultActivity;
 import com.healthslife.dao.HeartRateDB;
 import com.healthslife.dao.HeartRateRecord;
 import com.healthslife.healthtest.ImgAnalysis;
@@ -15,6 +16,7 @@ import com.healthslife.healthtest.Timer;
 import com.healthslife.widget.CircleProgress;
 import com.healthslife.widget.CircleProgress.CompleteListener;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,6 +25,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Interpolator;
@@ -33,7 +36,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HeartRateFragment extends Fragment implements View.OnClickListener{
+public class HeartRateFragment extends Fragment implements View.OnClickListener {
 
 	private static final int BEFORTEST = 0;
 	private static final int TESTING = 1;
@@ -82,36 +85,39 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener{
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		view = inflater.inflate(R.layout.fragment_heart_rate_l, null);
+		view = inflater.inflate(R.layout.fragment_heart_rate_l, null, false);
+		LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+		view.setLayoutParams(lp);
 		handler = new HeartRateHandler();
 		findView();
-//		setOnClick();
 
 		mImgAnalysis = new ImgAnalysis(inflater.getContext(),
 				(RelativeLayout) view.findViewById(R.id.new_blank));
 		mImgAnalysis.setImgCaptureListener(mImgCaptureListener);
 		mTimer = new Timer();
+		mCircleProgress.setCompleteListener(new CompleteListener() {
+			@Override
+			public void complete() {
+				// 测量完成（进度条100%）触发完成事件
+				currentTime = new Date().getTime();
+				reSet();
+				Intent intent = new Intent(getActivity(),HeartRateResultActivity.class);
+				intent.putExtra("data", averageHeartRate);
+				startActivity(intent);
+				// refreshData();
+				// saveData();
+			}
+		});
 		return view;
 	}
-
-//	private void setOnClick() {
-//		mImageButtonStart.setOnClickListener(new View.OnClickListener() {
-//			@Override
-//			public void onClick(View v) {
-//				mImageButtonStart.setImageDrawable(getResources().getDrawable(
-//						R.drawable.btn_start_button_selected));
-//				startTest();
-//			}
-//		});
-//	}
 
 	private void findView() {
 		mTextViewNumber = (TextView) view.findViewById(R.id.heart_rate_txt);
 		mCircleProgress = (CircleProgress) view
 				.findViewById(R.id.fragment_heart_rate_porbar);
 		mCircleProgress.setOnClickListener(this);
-//		mImageButtonStart = (ImageButton) view
-//				.findViewById(R.id.fragment_heart_rate_l_start);
+		// mImageButtonStart = (ImageButton) view
+		// .findViewById(R.id.fragment_heart_rate_l_start);
 		reLayout = (RelativeLayout) view
 				.findViewById(R.id.fragment_heart_rate_l_relativelayout_grid);
 	}
@@ -138,10 +144,10 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener{
 				imageView.setLayoutParams(lp);
 				imageView.setX(-120f);
 				imageView.setScaleX(2f);
-				relativeLayout.addView(imageView);
+				reLayout.addView(imageView);
 				imageView.animate().x(1200f);
 				imageView.animate().setInterpolator(interpolator);
-				imageView.animate().setDuration(3000);
+				imageView.animate().setDuration(6000);
 				imageView.animate().start();
 				break;
 
@@ -171,6 +177,7 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener{
 			if (dataList.size() == 0
 					|| (tempMills - dataList.get(dataList.size() - 1).time) > 100) {
 				dataList.add(new dataAndTime(total, mTimer.getMillis()));
+				Log.e("Lei", "analysisData");
 				analysisData();
 			}
 		}
@@ -182,55 +189,46 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener{
 			return;
 		}
 		int pairFirstPeak = findPeaks(lastPeakIndex);
-		Log.v("found","................................................................"+String.valueOf(pairFirstPeak));
 		if (pairFirstPeak == -1) {
 			return;
 		}
 		int pairSecondPeak = findPeaks(pairFirstPeak);
-		Log.v("found","................................................................"+String.valueOf(pairSecondPeak));
 		if (pairSecondPeak == -1) {
 			return;
 		}
+		haveHeartRatePeek();
 		lastPeakIndex = pairSecondPeak;
 		long temp = dataList.get(pairSecondPeak).time
 				- dataList.get(pairFirstPeak).time;
-//		if (temp < 500 || temp > 1500){
-//			Log.v("miss", String.valueOf(temp));
-//			return;
-//		}
+		if (temp < 500 || temp > 1500)
+			return;
 		peakPairs[peakPairsIndex][0] = pairFirstPeak;
 		peakPairs[peakPairsIndex][1] = pairSecondPeak;
 		peakPairsIndex++;
-		Log.v("peak found","................................................................");
-		//haveHeartRatePeek();
 		computeHeartRate();
+
 		mCircleProgress.slideToProgress(peakPairsIndex * 100);
+
 		if (peakPairsIndex >= 10) {
+			Log.e("Lei", "complete");
 			mImgAnalysis.stopCaptureImg();
 			Toast.makeText(getActivity(), "test complete", Toast.LENGTH_SHORT)
 					.show();
-			mCircleProgress.setCompleteListener(new CompleteListener() {
-				@Override
-				public void complete() {
-					// 测量完成（进度条100%）触发完成事件
-					currentTime = new Date().getTime();
-					reSet();
-					// refreshData();
-					saveData();
-				}
-			});
+
 		}
-		Log.v("heart rate", peakPairsIndex + "");
 	}
 
 	private void startTest() {
-		if (testState != BEFORTEST || mImgAnalysis.startCaptureImg() == false)
+		if (testState != BEFORTEST || mImgAnalysis.startCaptureImg() == false) {
+			Log.e("======>", "started false");
 			return;
+		}
 		// 开始测量心率
 		testState = TESTING;
 		mTimer.startTimer();
 		mTextViewNumber.setText("00");
 		// tipsTxt.setText("心率识别中………");
+		Log.e("======>", "started");
 	}
 
 	public int findPeaks(int start) {
@@ -269,10 +267,9 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener{
 		}
 		float temp = (60000f / (float) totalTime) * (float) peakPairsIndex;
 		averageHeartRate = (int) temp;
-		
+
 		Log.v("average", String.valueOf(averageHeartRate));
-		
-		
+
 		mTextViewNumber.setText(averageHeartRate + "");
 	}
 
@@ -290,17 +287,21 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener{
 		HeartRateDB mDB = new HeartRateDB(getActivity());
 		mDB.add(new HeartRateRecord(averageHeartRate, currentTime));
 	}
-	
+
 	@Override
 	public void onPause() {
-		// TODO Auto-generated method stub
 		super.onPause();
-		mImgAnalysis.releaseCamera();
+		closeTest();
 	}
+
+	private void closeTest() {
+		reSet();
+	}
+
+	boolean willStart = true;
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.fragment_heart_rate_porbar:
 			startTest();
@@ -308,8 +309,5 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener{
 
 		default:
 		}
-		
-		
-		
 	}
 }

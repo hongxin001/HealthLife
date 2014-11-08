@@ -33,35 +33,31 @@ public class ImgAnalysis implements Callback {
 	public boolean startCaptureImg() {
 		if (mCamera == null) {
 			Log.v("imganalysis", "mCamera == null");
-			surfaceCreated(mSurfaceHolder);
+			// surfaceCreated(mSurfaceHolder);
 			return false;
 		} else {
-			try {
-				mCamera.startPreview();// 开始预览，这步操作很重要
-				Log.v("imganalysis", "start");
-				openLight();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+
+			mCamera.startPreview();// 开始预览，这步操作很重要
+			Log.v("imganalysis", "start");
+			openLight();
+
 			return true;
 		}
 	}
 
 	public void stopCaptureImg() {
 		if (mCamera != null) {
-			try {
-				/* 停止预览 */
-				mCamera.stopPreview();
-				closeLight();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			closeLight();
+			/* 停止预览 */
+			mCamera.stopPreview();
+				
+	
 		}
 	}
 
 	// 打开闪光灯，用作手电筒
 	public void openLight() {
-		Log.v("imganalysis", "openLight");
+		Log.e("imganalysis", "openLight");
 		Parameters parameter = mCamera.getParameters();
 		parameter.setFlashMode(Parameters.FLASH_MODE_TORCH);
 		mCamera.setParameters(parameter);
@@ -69,9 +65,12 @@ public class ImgAnalysis implements Callback {
 
 	// 关闭闪光灯
 	public void closeLight() {
+		Log.e("imganalysis", "closeLight");
 		Parameters parameter = mCamera.getParameters();
 		parameter.setFlashMode(Parameters.FLASH_MODE_OFF);
+		
 		mCamera.setParameters(parameter);
+		Log.e("imganalysis","close:"+mCamera.getParameters().getFlashMode());
 	}
 
 	@Override
@@ -128,7 +127,7 @@ public class ImgAnalysis implements Callback {
 				parameters.setPictureSize(1024, 768);
 				mCamera.setParameters(parameters);
 				/* 打开预览画面 */
-				//mCamera.startPreview();
+				// mCamera.startPreview();
 			} catch (Exception e) {
 				e.printStackTrace();
 				Log.v("CameraError", "CameraError:" + e.getMessage());
@@ -139,13 +138,10 @@ public class ImgAnalysis implements Callback {
 	/* 停止相机的method */
 	private void stopCamera() {
 		if (mCamera != null) {
-			try {
-				/* 停止预览 */
-				mCamera.stopPreview();
-				closeLight();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			closeLight();
+			/* 停止预览 */
+			mCamera.stopPreview();
+			
 		}
 	}
 

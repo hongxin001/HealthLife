@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/lkdasjfla"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" >
+
+        <TextView
+            android:id="@+id/textview_activity_heart_rate_result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:paddingRight="20dp"
+            android:text="00"
+            android:textColor="#78c7fd"
+            android:textSize="90dp" />
+
+        <ImageView
+            android:id="@+id/jsdkjf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_toRightOf="@id/textview_activity_heart_rate_result"
+            android:src="@drawable/data" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/activity_heart_rate_result_relativelayout"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lkdasjfla"
+        android:layout_centerHorizontal="true" >
+
+        <RelativeLayout
+            android:id="@+id/cursor_seekbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/textview_heart_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65%"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_below="@id/textview_heart_result"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/percent_point" />
+        </RelativeLayout>
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="10dp"
+            android:layout_alignBottom="@id/cursor_seekbar"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/percent_line" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_heart_rate_result_relativelayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="have the same frequency range with you." />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/activity_heart_rate_result_relativelayout" >
+
+        <RelativeLayout
+            android:id="@+id/adjflaks"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp" >
+
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginLeft="30dp" >
+
+                <ImageView
+                    android:id="@+id/kongtiao"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:src="@drawable/aircon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="30dp"
+                    android:text="30"
+                    android:textColor="#fff"
+                    android:textSize="40sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp" >
+
+                <ImageView
+                    android:id="@+id/reshuiqi"
+                    android:layout_width="140dp"
+                    android:layout_height="140dp"
+                    android:src="@drawable/calorifier" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="7dp"
+                    android:text="41"
+                    android:textColor="#fff"
+                    android:textSize="40sp" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/adjflaks"
+            android:layout_marginTop="30dp" >
+
+            <ImageView
+                android:id="@+id/lamp"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginLeft="30dp"
+                android:src="@drawable/lamp_on" />
+
+            <ImageView
+                android:id="@+id/thermos"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="30dp"
+                android:src="@drawable/themos_on" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

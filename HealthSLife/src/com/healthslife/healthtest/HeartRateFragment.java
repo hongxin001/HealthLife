@@ -274,15 +274,12 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener 
 		mTimer.startTimer();
 		heartRateTxt.setText("00");
 		tipsTxt.setText("心率识别中………"); 
-		} 
-                                                                                                                                                                                                                                                                                            
-                                                                          
-	
+	} 
+    
 	private void afterSportBtnClick() {
 		if (testState != BEFORTEST) {
 			Toast.makeText(getActivity(), "请在心率识别前选择状态", Toast.LENGTH_SHORT)
 					.show();
-			;
 			return;
 		}
 		state = AFTERSPORT;
