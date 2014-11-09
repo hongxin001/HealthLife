@@ -149,84 +149,84 @@ public class MainActivity extends BaseFragmentActivity {
 	}
 
 	/* Called whenever we call invalidateOptionsMenu() */
-	@Override
-	public boolean onPrepareOptionsMenu(Menu menu) {
-		int selectedPosition = navi.getCheckedItemPosition();
-		// menu.findItem(R.id.action_music).setVisible(isVisible);
-		menu.findItem(R.id.action_history).setVisible(false);
-		if (selectedPosition == 1 || selectedPosition == 0) {
-			menu.findItem(R.id.action_history).setVisible(true);
-		}
-		switch (selectedPosition) {
-		case 0:
-			menu.findItem(R.id.action_history).setVisible(true);
-			menu.findItem(R.id.action_music).setVisible(true);
-			menu.findItem(R.id.action_music_control).setVisible(true);
-			break;
-		case 1:
-			menu.findItem(R.id.action_music).setVisible(false);
-			menu.findItem(R.id.action_music_control).setVisible(false);
-			menu.findItem(R.id.action_history).setVisible(true);
-			break;
-		default:
-			menu.findItem(R.id.action_history).setVisible(false);
-			menu.findItem(R.id.action_music).setVisible(false);
-			menu.findItem(R.id.action_music_control).setVisible(false);
-			break;
-		}
-		if (isPlaying) {
-			menu.findItem(R.id.action_music_control).setIcon(R.drawable.menu_music_stop);
-		} else {
-			menu.findItem(R.id.action_music_control).setIcon(R.drawable.menu_music_start);
-		}
-		return super.onPrepareOptionsMenu(menu);
-	}
+//	@Override
+//	public boolean onPrepareOptionsMenu(Menu menu) {
+//		int selectedPosition = navi.getCheckedItemPosition();
+//		// menu.findItem(R.id.action_music).setVisible(isVisible);
+//		menu.findItem(R.id.action_history).setVisible(false);
+//		if (selectedPosition == 1 || selectedPosition == 0) {
+//			menu.findItem(R.id.action_history).setVisible(true);
+//		}
+//		switch (selectedPosition) {
+//		case 0:
+//			menu.findItem(R.id.action_history).setVisible(true);
+//			menu.findItem(R.id.action_music).setVisible(true);
+//			menu.findItem(R.id.action_music_control).setVisible(true);
+//			break;
+//		case 1:
+//			menu.findItem(R.id.action_music).setVisible(false);
+//			menu.findItem(R.id.action_music_control).setVisible(false);
+//			menu.findItem(R.id.action_history).setVisible(true);
+//			break;
+//		default:
+//			menu.findItem(R.id.action_history).setVisible(false);
+//			menu.findItem(R.id.action_music).setVisible(false);
+//			menu.findItem(R.id.action_music_control).setVisible(false);
+//			break;
+//		}
+//		if (isPlaying) {
+//			menu.findItem(R.id.action_music_control).setIcon(R.drawable.menu_music_stop);
+//		} else {
+//			menu.findItem(R.id.action_music_control).setIcon(R.drawable.menu_music_start);
+//		}
+//		return super.onPrepareOptionsMenu(menu);
+//	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// The action bar home/up action should open or close the drawer.
-		// ActionBarDrawerToggle will take care of this.
-		if (mDrawerToggle.onOptionsItemSelected(item)) {
-			return true;
-		}
-		if (item.getItemId() == R.id.action_music) {
-			startActivity(new Intent(MainActivity.this, MusicActivity.class));
-		} else if (item.getItemId() == R.id.action_history) {
-			int selectedPosition = navi.getCheckedItemPosition();
-			if (selectedPosition == 0) {
-				startActivity(new Intent(MainActivity.this, RunHistoryActivity.class));
-			} else if (selectedPosition == 1) {
-				// 健康测试
-				if (healthTestFragment == null)
-					return false;
-				switch (healthTestFragment.getCurrentPager()) {
-				case 0:
-					// 打开心率测量的历史页面
-					// Toast.makeText(this, "打开心率测量的历史页面",
-					// Toast.LENGTH_SHORT).show();
-					Intent intent = new Intent(this, HeartRateHisActivity.class);
-					startActivity(intent);
-					break;
-				case 1:
-					// 打开心电图测试的历史页面
-					// Toast.makeText(this, "打开心电图测试的历史页面",
-					// Toast.LENGTH_SHORT).show();
-					startActivity(new Intent(this, ECGHisActivity.class));
-					break;
-				default:
-					break;
-				}
-
-			}
-		} else if (item.getItemId() == R.id.action_music_control) {
-			if (isPlaying) {
-				MusicUtil.pause();
-			} else {
-				MusicUtil.start();
-			}
-		}
-		return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		// The action bar home/up action should open or close the drawer.
+//		// ActionBarDrawerToggle will take care of this.
+//		if (mDrawerToggle.onOptionsItemSelected(item)) {
+//			return true;
+//		}
+//		if (item.getItemId() == R.id.action_music) {
+//			startActivity(new Intent(MainActivity.this, MusicActivity.class));
+//		} else if (item.getItemId() == R.id.action_history) {
+//			int selectedPosition = navi.getCheckedItemPosition();
+//			if (selectedPosition == 0) {
+//				startActivity(new Intent(MainActivity.this, RunHistoryActivity.class));
+//			} else if (selectedPosition == 1) {
+//				// 健康测试
+//				if (healthTestFragment == null)
+//					return false;
+//				switch (healthTestFragment.getCurrentPager()) {
+//				case 0:
+//					// 打开心率测量的历史页面
+//					// Toast.makeText(this, "打开心率测量的历史页面",
+//					// Toast.LENGTH_SHORT).show();
+//					Intent intent = new Intent(this, HeartRateHisActivity.class);
+//					startActivity(intent);
+//					break;
+//				case 1:
+//					// 打开心电图测试的历史页面
+//					// Toast.makeText(this, "打开心电图测试的历史页面",
+//					// Toast.LENGTH_SHORT).show();
+//					startActivity(new Intent(this, ECGHisActivity.class));
+//					break;
+//				default:
+//					break;
+//				}
+//
+//			}
+//		} else if (item.getItemId() == R.id.action_music_control) {
+//			if (isPlaying) {
+//				MusicUtil.pause();
+//			} else {
+//				MusicUtil.start();
+//			}
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	/**
 	 * When using the ActionBarDrawerToggle, you must call it during
