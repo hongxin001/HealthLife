@@ -295,6 +295,7 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener 
 	}
 
 	private void closeTest() {
+		mImgAnalysis.stopCaptureImg();
 		reSet();
 	}
 

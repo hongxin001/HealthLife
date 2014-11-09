@@ -23,6 +23,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,21 @@ public class newMainActivity extends BaseActivity{
 		
 		setDefaultFragment();
 		OnClick();	
+	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK){
+			drawer.openDrawer(GravityCompat.START);
+			isOpen = true;
+			return true;
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean onKeyUp(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		return true;
 	}
 	
 	private void selectItem(Fragment f) {
