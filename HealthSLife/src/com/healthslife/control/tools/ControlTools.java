@@ -89,11 +89,11 @@ public class ControlTools {
 		return message;
 	}
 
-	public String lightControl(int i) {
+	public String lightControl(int i,int port) {
 		if(i == 0){
-			line.setControlName(ControlNameEnum.CONTROL).setSwitchState(3,SwitchStateEnum.SWITCH_OFF);
+			line.setControlName(ControlNameEnum.CONTROL).setSwitchState(port,SwitchStateEnum.SWITCH_OFF);
 		}else{
-			line.setControlName(ControlNameEnum.CONTROL).setSwitchState(3,SwitchStateEnum.SWITCH_ON);
+			line.setControlName(ControlNameEnum.CONTROL).setSwitchState(port,SwitchStateEnum.SWITCH_ON);
 		}
 		executorService.submit(new Runnable() {
 			

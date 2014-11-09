@@ -19,6 +19,8 @@ public class AppSetting {
 	private static final String GOLF = "GOLF";
 	private static final String WEIGHT = "WEIGHT";
 	private static final String HEIGHT = "HEIGHT";
+	
+	private static final String LIGHT = "";
 	private Context mContext;
 
 	public AppSetting(Context context) {

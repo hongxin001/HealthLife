@@ -84,7 +84,7 @@ public class LightControlFragment extends Fragment implements OnClickListener {
 		final int num = i;
 		ControlTools tools = new ControlTools();
 		tools.init(getActivity());
-		String answer = tools.lightControl(i);
+		String answer = tools.lightControl(i,3);
 		
 	}
 }
