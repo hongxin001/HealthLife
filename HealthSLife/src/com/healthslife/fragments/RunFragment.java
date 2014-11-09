@@ -2,12 +2,15 @@ package com.healthslife.fragments;
 
 import com.healthslife.R;
 import com.healthslife.activitys.newMainActivity;
+import com.healthslife.pedometer.main.Database;
+import com.healthslife.pedometer.util.Util;
 import com.healthslife.setting.AppSetting;
 import com.healthslife.widget.CircleProgress;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -76,7 +79,9 @@ public class RunFragment extends Fragment {
 				FragmentManager manager = getFragmentManager();
 				manager.beginTransaction()
 						.replace(R.id.main_content,
-								NewDistanceFragment.getInstance()).commit();
+								new Fragment_Overview()
+//								NewDistanceFragment.getInstance()
+								).commit();
 			}
 		});
 		mImagePushUp.setOnClickListener(new OnClickListener() {
@@ -89,6 +94,14 @@ public class RunFragment extends Fragment {
 								PushUpFragment.getInstance()).commit();
 			}
 		});
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		Database db = Database.getInstance(getActivity());
+		int i  = db.getCurrentSteps();
+		Log.e("Lei", ""+i);
+		setCircleProgress(i/1000f);
 	}
 
 	/**

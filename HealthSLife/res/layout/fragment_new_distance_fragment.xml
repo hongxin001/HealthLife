@@ -67,7 +67,6 @@
             </LinearLayout>
         </RelativeLayout>
     </FrameLayout>
-    
     <FrameLayout
         android:id="@+id/fragment_distance_run"
         android:visibility="invisible"
