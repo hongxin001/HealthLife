@@ -60,7 +60,6 @@ public class NewDistanceFragment extends Fragment {
 	TextView mCircleTextViewPaceAim;
 	private boolean mIsEngineInitSuccess = false;
 	private final static String ACCESS_KEY = "	g7roxmwdB8dUQwTrdOpuLcgF";
-
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,6 +80,7 @@ public class NewDistanceFragment extends Fragment {
 		SearchOnClick();
 		// TODO-I need you set percent of the CircleProgress
 		// and number of number textViews
+		
 		return view;
 	}
 

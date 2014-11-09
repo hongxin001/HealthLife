@@ -1,0 +1,142 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp"
+                tools:context=".Activity_Main">
+
+    <com.healthslife.widget.eazegraph.charts.PieChart
+        xmlns:eaze="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/graph"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        eaze:egLegendHeight="0dp"
+        eaze:egInnerPadding="75"
+        eaze:egHighlightStrength="1"/>
+
+    <TextView
+        android:id="@+id/steps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:gravity="center"
+        android:textSize="45sp"
+        android:text="10.000"/>
+
+    <TextView
+        android:id="@+id/unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/steps"
+        android:layout_centerHorizontal="true"
+        android:text="@string/steps"
+        android:textSize="20sp"/>
+
+    <LinearLayout
+        android:id="@+id/averageandtotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/graph"
+        android:layout_marginTop="20dp">
+
+        <TextView
+            android:id="@+id/average"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/averageandtotaltext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/averageandtotal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/average"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/total"/>
+    </LinearLayout>
+    
+    
+	<View
+        android:id="@+id/fragment_distance_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/averageandtotaltext"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#999a9b" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fragment_distance_line"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal" >
+        <TextView 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:textColor="#999a9b"
+        	android:textSize="20sp"
+        	android:text="Please type in your destination."
+        	/>
+        <RelativeLayout 
+            android:layout_width="270dp"
+        	android:layout_height="36dp"
+        	android:layout_marginTop="30dp"
+        	android:background="@drawable/shape_black_bord"
+            >
+            <EditText android:id="@+id/editText_distance_run_destance"
+                android:layout_width="match_parent"
+        		android:layout_height="match_parent"
+        		android:background="@null"/>
+            <ImageButton 
+                android:id="@+id/ensureSearch_button"
+                android:src="@drawable/search_alt"
+                android:background="@null"
+                android:layout_width="42dp"
+        		android:layout_height="30dp"
+        		android:layout_alignRight="@id/editText_distance_run_destance"
+        		android:paddingRight="8dp"
+        		android:layout_centerVertical="true"
+        	/>
+        </RelativeLayout>
+    </LinearLayout>
+    
+
+<!--<com.healthslife.widget.eazegraph.charts.BarChart
+        xmlns:eaze="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/bargraph"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_below="@+id/averageandtotaltext"
+        android:layout_marginTop="50dp"
+        eaze:egLegendHeight="35dp"
+        eaze:egShowValues="true"/>-->
+
+</RelativeLayout>
