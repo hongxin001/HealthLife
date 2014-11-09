@@ -64,11 +64,10 @@ public class RunFragment extends Fragment {
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setting = new AppSetting(getActivity());
 		int calorie = setting.getRun();
-		// mTextViewBurnt.setText(String.valueOf());
+	 
 	}
 
 	private void onClick() {
@@ -100,8 +99,8 @@ public class RunFragment extends Fragment {
 		super.onResume();
 		Database db = Database.getInstance(getActivity());
 		int i  = db.getCurrentSteps();
-		Log.e("Lei", ""+i);
 		setCircleProgress(i/1000f);
+		mTextViewBurnt.setText(""+ (int)(i/1000f*196));
 	}
 
 	/**
