@@ -101,7 +101,7 @@ public class ControlTools {
 			public void run() {
 				// TODO Auto-generated method stub
 				message = client.send(line);
-				Log.v("message:",message );
+				Log.v("message:","wei:"+message );
 			}
 		});
 		return message;

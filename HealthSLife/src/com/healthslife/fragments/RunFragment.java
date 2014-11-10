@@ -67,6 +67,7 @@ public class RunFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 		setting = new AppSetting(getActivity());
 		int calorie = setting.getRun();
+		//mTextViewAim.setText(calorie);
 	 
 	}
 

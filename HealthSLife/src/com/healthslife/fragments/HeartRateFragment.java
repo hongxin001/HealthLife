@@ -3,8 +3,11 @@ package com.healthslife.fragments;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.TimerTask;
 
+import com.android.volley.Response;
 import com.healthslife.R;
 import com.healthslife.activitys.HeartRateResultActivity;
 import com.healthslife.dao.HeartRateDB;
@@ -13,6 +16,8 @@ import com.healthslife.healthtest.ImgAnalysis;
 import com.healthslife.healthtest.HeartRateFragment.dataAndTime;
 import com.healthslife.healthtest.ImgAnalysis.ImgCaptureListener;
 import com.healthslife.healthtest.Timer;
+import com.healthslife.utils.Configs;
+import com.healthslife.utils.String2Request;
 import com.healthslife.widget.CircleProgress;
 import com.healthslife.widget.CircleProgress.CompleteListener;
 
@@ -36,7 +41,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class HeartRateFragment extends Fragment implements View.OnClickListener {
+public class HeartRateFragment extends BaseFragment implements View.OnClickListener {
 
 	private static final int BEFORTEST = 0;
 	private static final int TESTING = 1;
@@ -101,11 +106,13 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener 
 				// 测量完成（进度条100%）触发完成事件
 				currentTime = new Date().getTime();
 				reSet();
+				//getpercent();
+				// refreshData();
 				Intent intent = new Intent(getActivity(),HeartRateResultActivity.class);
 				intent.putExtra("data", averageHeartRate);
+				//intent.putExtra("percent", s);
 				startActivity(intent);
-				// refreshData();
-				// saveData();
+				 saveData();
 			}
 		});
 		return view;
@@ -287,7 +294,22 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener 
 		HeartRateDB mDB = new HeartRateDB(getActivity());
 		mDB.add(new HeartRateRecord(averageHeartRate, currentTime));
 	}
+	
+	public void getpercent(){
+		executeRequest(new String2Request(Configs.GET_PERCENT, "utf-8", responseListener(),
+                errorListener()) {
+            protected Map<String, String> getParams() {
+                //return new ApiParams().with("param1", "02").with("param2", "14");
+                Map<String, String> m = new HashMap<String, String>();
+                m.put("id", "2");
+                m.put("heartrate", String.valueOf(averageHeartRate));
+                return m;
+            }
 
+        });
+	}
+	
+	
 	@Override
 	public void onPause() {
 		super.onPause();
@@ -310,5 +332,20 @@ public class HeartRateFragment extends Fragment implements View.OnClickListener 
 
 		default:
 		}
+	}
+	
+	private Response.Listener<String> responseListener(){
+		return new Response.Listener<String>() {
+			@Override
+			public void onResponse(String s) {
+				// TODO Auto-generated method stub
+				Log.v("response",s);
+				Intent intent = new Intent(getActivity(),HeartRateResultActivity.class);
+				intent.putExtra("data", averageHeartRate);
+				intent.putExtra("percent", s);
+				startActivity(intent);
+			}
+		};
+		
 	}
 }
