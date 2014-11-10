@@ -65,21 +65,23 @@ public class newMainActivity extends BaseActivity{
 		setNumber();
 		
 		setDefaultFragment();
-		OnClick();	
+		OnClick();
+		drawer.setFocusable(false);
 	}
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK){
+			
 			drawer.openDrawer(GravityCompat.START);
 			isOpen = true;
 			return true;
 		}
-		return true;
+		return super.onKeyDown(keyCode, event);
 	}
+	
 	
 	@Override
 	public boolean onKeyUp(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 	
