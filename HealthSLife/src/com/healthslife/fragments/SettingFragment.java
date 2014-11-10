@@ -26,6 +26,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class SettingFragment extends Fragment {
@@ -155,7 +156,7 @@ public class SettingFragment extends Fragment {
 		dialog = new AlertDialog.Builder(this.getActivity());
 		LayoutInflater inflater = (LayoutInflater) this.getActivity()
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		LinearLayout layout = (LinearLayout) inflater.inflate(
+		RelativeLayout layout = (RelativeLayout) inflater.inflate(
 				R.layout.dialog_account_setting, null);
 		dialog.setView(layout);
 		edit_account = (EditText) layout.findViewById(R.id.edit_account);

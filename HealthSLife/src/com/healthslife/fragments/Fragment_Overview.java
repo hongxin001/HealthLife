@@ -1,6 +1,7 @@
 package com.healthslife.fragments;
 import android.support.v4.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.hardware.Sensor;
@@ -8,24 +9,23 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
-
-
-
-
-
-
-
-
-
+import com.baidu.navisdk.BaiduNaviManager;
+import com.baidu.navisdk.BNaviEngineManager.NaviEngineInitListener;
+import com.baidu.navisdk.BaiduNaviManager.OnStartNavigationListener;
+import com.baidu.navisdk.comapi.routeplan.RoutePlanParams.NE_RoutePlan_Mode;
+import com.google.android.gms.internal.mb;
 import com.healthslife.BuildConfig;
 import com.healthslife.R;
+import com.healthslife.activitys.BNavigatorActivity;
 import com.healthslife.pedometer.main.Database;
 import com.healthslife.pedometer.main.Fragment_Settings;
 import com.healthslife.pedometer.tools.ControlTools;
@@ -48,12 +48,13 @@ public class Fragment_Overview extends Fragment implements SensorEventListener {
 
     private PieModel sliceGoal, sliceCurrent;
     private PieChart pg;
-
+    private ImageButton mSearchBtn;
+    
     private int todayOffset, total_start, goal, since_boot, total_days;
     public final static NumberFormat formatter = NumberFormat.getInstance(Locale.getDefault());
     private boolean showSteps = true;
-
-
+    private final static String ACCESS_KEY = "	g7roxmwdB8dUQwTrdOpuLcgF";
+    private boolean mIsEngineInitSuccess = false;
     private ControlTools controlTools;
     private boolean isLightOpen = false;
     @Override
@@ -62,6 +63,8 @@ public class Fragment_Overview extends Fragment implements SensorEventListener {
         setHasOptionsMenu(true);
         controlTools = new ControlTools();
         controlTools.init(getActivity());
+        BaiduNaviManager.getInstance().initEngine(getActivity(),
+				getSdcardDir(), mNaviEngineInitListener, ACCESS_KEY, null);
     }
 
     @Override
@@ -70,7 +73,8 @@ public class Fragment_Overview extends Fragment implements SensorEventListener {
         stepsView = (TextView) v.findViewById(R.id.steps);
         totalView = (TextView) v.findViewById(R.id.total);
         averageView = (TextView) v.findViewById(R.id.average);
-
+        mSearchBtn = (ImageButton)v.findViewById(R.id.ensureSearch_button);
+        
         pg = (PieChart) v.findViewById(R.id.graph);
 
         // slice for the steps taken today
@@ -92,6 +96,34 @@ public class Fragment_Overview extends Fragment implements SensorEventListener {
         pg.setDrawValueInPie(false);
         pg.setUsePieRotation(true);
         pg.startAnimation();
+        
+        
+        mSearchBtn.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				BaiduNaviManager.getInstance().launchNavigator(getActivity(),
+						40.05087, 116.30142, "百度大厦", 39.90882, 116.39750,
+						"北京天安门", NE_RoutePlan_Mode.ROUTE_PLAN_MOD_MIN_TIME, // 算路方式
+						true, // 真实导航
+						BaiduNaviManager.STRATEGY_FORCE_ONLINE_PRIORITY, // 在离线策略
+						new OnStartNavigationListener() { // 跳转监听
+
+							@Override
+							public void onJumpToNavigator(Bundle configParams) {
+								Intent intent = new Intent(getActivity(),
+										BNavigatorActivity.class);
+								intent.putExtras(configParams);
+								startActivity(intent);
+							}
+
+							@Override
+							public void onJumpToDownloader() {
+							}
+						});
+			}
+		});
         return v;
     }
 
@@ -363,5 +395,26 @@ public class Fragment_Overview extends Fragment implements SensorEventListener {
 //        }
 //        db.close();
 //    }
+    
+	private NaviEngineInitListener mNaviEngineInitListener = new NaviEngineInitListener() {
+		public void engineInitSuccess() {
+			// 导航初始化是异步的，需要一小段时间，以这个标志来识别引擎是否初始化成功，为true时候才能发起导航
+			mIsEngineInitSuccess = true;
+		}
+
+		public void engineInitStart() {
+		}
+
+		public void engineInitFail() {
+		}
+	};
+
+	private String getSdcardDir() {
+		if (Environment.getExternalStorageState().equalsIgnoreCase(
+				Environment.MEDIA_MOUNTED)) {
+			return Environment.getExternalStorageDirectory().toString();
+		}
+		return null;
+	}
 
 }
