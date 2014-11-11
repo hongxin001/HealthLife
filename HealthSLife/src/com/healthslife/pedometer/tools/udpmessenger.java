@@ -111,7 +111,6 @@ public abstract class udpmessenger {
 
     public void startMessageReceiver() {
         Runnable receiver = new Runnable() {
-
             @Override
             public void run() {
                 WifiManager wim = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);

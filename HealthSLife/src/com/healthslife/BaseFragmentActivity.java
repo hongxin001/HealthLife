@@ -14,13 +14,11 @@ public class BaseFragmentActivity extends FragmentActivity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
 		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
 	public void startActivity(Intent intent) {
-		// TODO Auto-generated method stub
 		// overridePendingTransition(enterAnim, exitAnim)
 		super.startActivity(intent);
 	}

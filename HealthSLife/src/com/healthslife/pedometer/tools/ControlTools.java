@@ -100,7 +100,6 @@ public class ControlTools {
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
                 Log.e("Lei",":"+"send");
 				message = client.send(line);
 				Log.v("Lei:",message );
