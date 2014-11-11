@@ -2,21 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-<<<<<<< HEAD
-	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/google-play-services_lib"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/LocationLib"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/MusicLib"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/PagerSlidingTabStrip"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/ShareSDK"/>
-=======
 	<classpathentry kind="src" path="res"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/appcompat_v7"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/google-play-services_lib"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/LocationLib"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MusicLib"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/PagerSlidingTabStrip"/>
@@ -36,7 +27,5 @@
 	<classpathentry exported="true" kind="lib" path="libs/ormlite-core-4.48.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/universal-image-loader-1.9.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/volley.jar"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/google-play-services_lib"/>
->>>>>>> 75379d857600e6a2ff5dd5ededd28254cf5a8831
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
