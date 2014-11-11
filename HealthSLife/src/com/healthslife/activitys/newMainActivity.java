@@ -4,6 +4,7 @@ package com.healthslife.activitys;
 import com.healthslife.R;
 import com.healthslife.activitys.BaseActivity;
 import com.healthslife.control.fragment.LightControlFragment;
+import com.healthslife.dao.HeartRateDB;
 import com.healthslife.fragments.HeartRateFragment;
 import com.healthslife.fragments.RemoteListFragment;
 import com.healthslife.fragments.RunFragment;
@@ -34,7 +35,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class newMainActivity extends BaseActivity{
-	
+	private Activity mActivity;
 	DrawerLayout drawer;
 	RelativeLayout mButtonExercise;
 	RelativeLayout mButtonHeartRate;
@@ -59,7 +60,7 @@ public class newMainActivity extends BaseActivity{
 		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 	                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.activity_new_main);
-		
+		mActivity = this;
 		findDrawerView();
 		setActionBarLayout();
 		setNumber();
@@ -200,14 +201,17 @@ public class newMainActivity extends BaseActivity{
 				closeDrawer();
 			}
 		});
-		
 		mButtonHouseConl.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				selectItem(getRemoteListFragment());
+//				selectItem();
 //				selectItem(new LightControlFragment());
-				setTitle("HouseCtrl");
-				closeDrawer();
+//				setTitle("HouseCtrl");
+//				closeDrawer();
+				HeartRateDB mDB = new HeartRateDB(mActivity);
+				Intent intent = new Intent(newMainActivity.this,HeartRateResultActivity.class);
+//				intent.putExtra("data",mDB.getLast().getHeartRate());
+				startActivity(intent);
 			}
 		});
 		mButtonDataCenter.setOnClickListener(new View.OnClickListener() {
@@ -226,9 +230,6 @@ public class newMainActivity extends BaseActivity{
 			}
 		});
 	}
-	
-	
-	
 	
 	private void closeDrawer(){
 		if(drawer!= null){

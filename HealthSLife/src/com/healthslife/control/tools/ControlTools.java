@@ -4,6 +4,8 @@ import java.net.DatagramSocket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.healthslife.setting.AppSetting;
+
 import android.content.Context;
 import android.net.wifi.WifiManager;
 import android.os.StrictMode;
@@ -28,7 +30,7 @@ public class ControlTools {
 		
 		client = RemoteControlClient
 				.getInstance(ctx);
-		client.config("115.28.45.241", "59995", "00068", "1994");
+		client.config("115.28.45.241", "59995", AppSetting.ACCOUNT_N, AppSetting.PSW_N);
 		line = new SendCommandLine();
 	}
 	
@@ -38,7 +40,6 @@ public class ControlTools {
 
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				message = client.send(line);
 				Log.v("message:", message);
 			}
@@ -99,7 +100,6 @@ public class ControlTools {
 			
 			@Override
 			public void run() {
-				// TODO Auto-generated method stub
 				message = client.send(line);
 				Log.v("message:","wei:"+message );
 			}

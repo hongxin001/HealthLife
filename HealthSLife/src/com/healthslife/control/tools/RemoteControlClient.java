@@ -63,6 +63,8 @@ public class RemoteControlClient {
 		mAppSetting = new AppSetting(this.ctx);
 		String account = (String) mAppSetting.getRemoteAccount();
 		String psw = (String) mAppSetting.getRemotepsw();
+		Log.e("account",account);
+		Log.e("psw",psw);
 		if ((account != "") && (psw != "")) {
 			this.configUser(account, psw);
 		}

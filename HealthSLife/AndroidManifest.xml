@@ -70,7 +70,7 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-sdk
-        android:minSdkVersion="19"
+        android:minSdkVersion="18"
         android:targetSdkVersion="19" />
 
     <application

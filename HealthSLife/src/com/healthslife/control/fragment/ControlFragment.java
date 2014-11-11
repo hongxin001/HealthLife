@@ -11,6 +11,7 @@ import com.healthslife.control.tools.RemoteControlClient;
 import com.healthslife.control.tools.SendCommandLine;
 import com.healthslife.control.tools.UDPreceiver;
 import com.healthslife.control.tools.UdpHelper;
+import com.healthslife.setting.AppSetting;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
@@ -83,12 +84,12 @@ public class ControlFragment extends Fragment {
 						Context ctx = (Context) getActivity();
 						RemoteControlClient client = RemoteControlClient
 								.getInstance(ctx);
-						client.config("115.28.45.241", "59995", "00068", "1994");
+						client.config("115.28.45.241", "59995", AppSetting.ACCOUNT_N, AppSetting.PSW_N);
 						SendCommandLine line = new SendCommandLine();
 						line.setControlName(ControlNameEnum.CONTROL)
 								.setAirConditionState(
 										AirConditionStateEnum.CONTROL_ONE)
-								.setUsername("00068").setPassword("1994");
+								.setUsername(AppSetting.ACCOUNT_N).setPassword(AppSetting.PSW_N);
 
 						Log.v("string", line.getSendCommandString());
 						// UdpHelper helper = new UdpHelper();

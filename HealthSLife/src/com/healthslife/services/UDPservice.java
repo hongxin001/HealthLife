@@ -11,19 +11,17 @@ import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.os.IBinder;
 
-public class UDPservice extends Service implements Observer{
+public class UDPservice extends Service implements Observer {
 	private UdpHelper udphelper;
 	private Thread tReceived;
+
 	@Override
 	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public void onCreate() {
-		// TODO Auto-generated method stub
-
 		WifiManager manager = (WifiManager) this
 				.getSystemService(Context.WIFI_SERVICE);
 		udphelper = new UdpHelper(manager);
@@ -37,7 +35,6 @@ public class UDPservice extends Service implements Observer{
 
 	@Override
 	public void update(Observable observable, Object data) {
-		// TODO Auto-generated method stub
-		
+
 	}
 }
