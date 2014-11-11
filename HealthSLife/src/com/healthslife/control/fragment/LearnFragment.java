@@ -10,6 +10,7 @@ import com.healthslife.control.tools.RemoteControlClient;
 import com.healthslife.control.tools.SendCommandLine;
 import com.healthslife.control.tools.UdpHelper;
 import com.healthslife.services.UDPListenerService;
+import com.healthslife.setting.AppSetting;
 
 import android.content.Context;
 import android.content.Intent;
@@ -57,7 +58,7 @@ public class LearnFragment extends Fragment {
 
 		Context ctx = (Context) getActivity();
 		final RemoteControlClient client = RemoteControlClient.getInstance(ctx);
-		client.config("115.28.45.241", "59995", "00068", "1994");
+		client.config("115.28.45.241", "59995", AppSetting.ACCOUNT_N, AppSetting.PSW_N);
 		btn1.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -71,7 +72,7 @@ public class LearnFragment extends Fragment {
 						line.setControlName(ControlNameEnum.CONTROL)
 								.setAirConditionState(
 										AirConditionStateEnum.LEARNING_ONE)
-								.setUsername("00068").setPassword("1994");
+								.setUsername(AppSetting.ACCOUNT_N).setPassword(AppSetting.PSW_N);
 						Log.v("string", line.getSendCommandString());
 						client.send(line);
 					}

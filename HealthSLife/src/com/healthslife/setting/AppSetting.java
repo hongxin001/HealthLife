@@ -23,6 +23,10 @@ public class AppSetting {
 	private static final String LIGHT = "";
 	private Context mContext;
 
+	
+	
+	public static final String ACCOUNT_N = "00237";
+	public static final String PSW_N = "1994";
 	public AppSetting(Context context) {
 		mContext = context.getApplicationContext();
 	}
@@ -65,7 +69,8 @@ public class AppSetting {
 	
 	public String getRemoteAccount(){
 		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
-		return preferences.getString(REMOTE_ACCOUNT, "00068");
+//		return preferences.getString(REMOTE_ACCOUNT, "00068");
+		return preferences.getString(REMOTE_ACCOUNT, ACCOUNT_N);
 	}
 	
 	public void setRemoteAccount(String account) {
@@ -77,7 +82,7 @@ public class AppSetting {
 	
 	public String getRemotepsw(){
 		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
-		return preferences.getString(REMOTE_PSW, "1994");
+		return preferences.getString(REMOTE_PSW, PSW_N);
 	}
 	
 	public void setRemotepsw(String psw) {
@@ -139,14 +144,12 @@ public class AppSetting {
 		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
 		return preferences.getInt(WEIGHT, 0);
 	}
-
 	public void setWeight(int weight) {
 		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
 		Editor editor = preferences.edit();
 		editor.putInt(WEIGHT, weight);
 		editor.commit();
 	}
-
 	public int getHeight() {
 		SharedPreferences preferences = mContext.getSharedPreferences(PREFERENCE_NAME, 0);
 		return preferences.getInt(HEIGHT, 0);
