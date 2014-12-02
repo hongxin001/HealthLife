@@ -22,7 +22,7 @@ import com.baidu.navisdk.BaiduNaviManager;
 import com.baidu.navisdk.BNaviEngineManager.NaviEngineInitListener;
 import com.baidu.navisdk.BaiduNaviManager.OnStartNavigationListener;
 import com.baidu.navisdk.comapi.routeplan.RoutePlanParams.NE_RoutePlan_Mode;
-import com.google.android.gms.internal.mb;
+
 import com.healthslife.BuildConfig;
 import com.healthslife.R;
 import com.healthslife.activitys.BNavigatorActivity;

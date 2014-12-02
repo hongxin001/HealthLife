@@ -95,6 +95,7 @@ public class newMainActivity extends BaseActivity{
 		setTitle("Running");
 		selectItem(RunFragment.getInstance());
 	}
+	
 	private RemoteListFragment getRemoteListFragment(){
 		if (mFragmentRemoteList == null){
 			mFragmentRemoteList = RemoteListFragment.getInstance();
@@ -210,7 +211,7 @@ public class newMainActivity extends BaseActivity{
 //				closeDrawer();
 				HeartRateDB mDB = new HeartRateDB(mActivity);
 				Intent intent = new Intent(newMainActivity.this,HeartRateResultActivity.class);
-//				intent.putExtra("data",mDB.getLast().getHeartRate());
+				intent.putExtra("data",mDB.getLast().getHeartRate());
 				startActivity(intent);
 			}
 		});

@@ -26,8 +26,10 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SettingFragment extends Fragment {
 
@@ -62,26 +64,39 @@ public class SettingFragment extends Fragment {
 			return self = new SettingFragment();
 		}
 	}
-
+	static boolean isClicked = false;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		
 		View view = inflater.inflate(R.layout.fragment_setting, null);
+		LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
+		view.setLayoutParams(lp);
 		runAlarmImageView = (ImageView) view
 				.findViewById(R.id.setting_run_alarm_img);
 		runMusicImageView = (ImageView) view
 				.findViewById(R.id.setting_run_music_img);
 		listenSettingImageView = (ImageView)view.findViewById(R.id.listen_setting_img);
 		
-		
 		aboutUsView = view.findViewById(R.id.setting_about_us_layout);
 		checkUpdateView = view.findViewById(R.id.setting_check_update_layout);
 		countDownTimeView = view.findViewById(R.id.setting_count_down_layout);
 		countDownTextView = (TextView) view
 				.findViewById(R.id.setting_count_down_txt);
-		
-		
+		view.findViewById(R.id.setting_remote_account).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				if (isClicked){
+					AppSetting.ACCOUNT_N = "00068";
+					isClicked =false;
+					Toast.makeText(SettingFragment.this.getActivity(), "00068", Toast.LENGTH_SHORT).show();
+				}else{
+					AppSetting.ACCOUNT_N = "00237";
+					isClicked =true;
+					Toast.makeText(SettingFragment.this.getActivity(), "00237", Toast.LENGTH_SHORT).show();
+				}
+			}
+		});
 		mAppSetting = new AppSetting(getActivity());
 		setView();
 		initDialog();

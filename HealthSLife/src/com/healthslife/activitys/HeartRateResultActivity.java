@@ -1,5 +1,11 @@
 package com.healthslife.activitys;
 
+import java.util.Date;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import com.google.android.gms.internal.ms;
 import com.healthslife.R;
 import com.healthslife.control.fragment.AirControlFragment;
 import com.healthslife.control.tools.ControlTools;
@@ -12,6 +18,8 @@ import android.support.v4.app.FragmentActivity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.GravityCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -45,6 +53,7 @@ public class HeartRateResultActivity extends FragmentActivity {
 	private Activity mActivity;
 	private ControlTools ctools;
 	private String answer;
+	private LightHandler handler;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +65,13 @@ public class HeartRateResultActivity extends FragmentActivity {
 		setContentView(R.layout.activity_heart_rate_result);
 		ctools = new ControlTools();
 		ctools.init(this);
+		handler = new LightHandler();
 		findView();
 		setActionBarLayout();
 		setData();
-		setCursorProgress(65);
-		Toast.makeText(this, "智能家居服务已开启", Toast.LENGTH_LONG).show();
+		setCursorProgress(75);
+		setEquip();
+		Toast.makeText(this, "智能家居服务已开启", Toast.LENGTH_SHORT).show();
 	}
 
 	private void setData() {
@@ -71,7 +82,23 @@ public class HeartRateResultActivity extends FragmentActivity {
 	private void getpercent(int i) {
 
 	}
-
+	
+	private void setEquip(){
+		sendLightLine(1, 0);
+		handler.sendEmptyMessageDelayed(0x135, 5000);
+	}
+	class LightHandler extends Handler{
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == 0x135) {
+				sendLightLine(1, 1);
+			}
+			super.handleMessage(msg);
+		}
+	}
+	
+	
+	
 	private void findView() {
 		airConditionImg = (ImageView) findViewById(R.id.kongtiao);
 		hotwaterImg = (ImageView) findViewById(R.id.reshuiqi);
@@ -84,7 +111,6 @@ public class HeartRateResultActivity extends FragmentActivity {
 		number = (TextView) findViewById(R.id.textview_heart_result);
 
 		airConditionImg.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				findViewById(R.id.relativelayout_visible).setVisibility(
@@ -96,10 +122,8 @@ public class HeartRateResultActivity extends FragmentActivity {
 		});
 
 		hotwaterImg.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				findViewById(R.id.relativelayout_visible).setVisibility(
 						View.GONE);
 				getSupportFragmentManager().beginTransaction()
@@ -109,14 +133,11 @@ public class HeartRateResultActivity extends FragmentActivity {
 		});
 
 		lampImg.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				if (lightCondition == 0) {
 					sendLightLine(1, 0);
-					lightCondition = 1;
-					lampImg.setImageResource(R.drawable.lamp_on);
 					/*
 					 * if ((result!=null)&&(tools.getSwitchResult(result, 0) ==
 					 * SwitchStateEnum.SWITCH_ON)) { lightCondition = 1;
@@ -126,8 +147,7 @@ public class HeartRateResultActivity extends FragmentActivity {
 					 */
 				} else {
 					sendLightLine(0, 0);
-					lightCondition = 0;
-					lampImg.setImageResource(R.drawable.lamp_off);
+					
 					/*
 					 * if ((result!=null)&&(tools.getSwitchResult(result, 0) ==
 					 * SwitchStateEnum.SWITCH_OFF)) { lightCondition = 0;
@@ -146,8 +166,7 @@ public class HeartRateResultActivity extends FragmentActivity {
 				// TODO Auto-generated method stub
 				if (thermosCondition == 0) {
 					sendLightLine(1, 1);
-					thermosCondition = 1;
-					thermosImg.setImageResource(R.drawable.themos_on);
+					
 					/*
 					 * if (tools.getSwitchResult(result, 1) ==
 					 * SwitchStateEnum.SWITCH_ON) { thermosCondition = 1;
@@ -157,8 +176,7 @@ public class HeartRateResultActivity extends FragmentActivity {
 					 */
 				} else {
 					sendLightLine(0, 1);
-					thermosCondition = 0;
-					thermosImg.setImageResource(R.drawable.themos_off);
+					
 					/*
 					 * if (tools.getSwitchResult(result, 1) ==
 					 * SwitchStateEnum.SWITCH_OFF) { thermosCondition = 0;
@@ -173,6 +191,23 @@ public class HeartRateResultActivity extends FragmentActivity {
 	}
 
 	void sendLightLine(int i, int port) {
+		if(i == 0){
+			if(port==0){
+				lightCondition = 0;
+				lampImg.setImageResource(R.drawable.lamp_off);
+			}else{
+				thermosCondition= 0;
+				thermosImg.setImageResource(R.drawable.themos_off);
+			}	
+		}else{
+			if(port==0){
+				lightCondition = 1;
+				lampImg.setImageResource(R.drawable.lamp_on);
+			}else{
+				thermosCondition= 1;
+				thermosImg.setImageResource(R.drawable.themos_on);
+			}
+		}
 		ControlTools tools = new ControlTools();
 		tools.init(this);
 		result = tools.lightControl(i, port);
@@ -180,7 +215,12 @@ public class HeartRateResultActivity extends FragmentActivity {
 	}
 
 	private void setCursorProgress(int percent) {
+		TextView tv = (TextView) findViewById(R.id.textview_heart_result);
+		Random random = new Random(new Date().getTime());
+		percent = percent + (int)random.nextDouble()*(5+5+1)-5;
+		tv.setText(""+percent+"%");
 		percent = (int) (percent * 7);
+		
 		RelativeLayout.LayoutParams lp = new LayoutParams(
 				RelativeLayout.LayoutParams.WRAP_CONTENT,
 				RelativeLayout.LayoutParams.WRAP_CONTENT);

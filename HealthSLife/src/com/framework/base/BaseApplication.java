@@ -17,13 +17,12 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 public class BaseApplication extends Application {
 	private static BaseApplication mInstance;
 	private MyApplicationManager manager;
-	private AppSetting mAppSetting;
 	@Override
 	public void onCreate() {
 		mInstance = this;
 		manager = new MyApplicationManager(this);
 		
-		mAppSetting = new AppSetting(getApplicationContext());
+		new AppSetting(getApplicationContext());
 		
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
 				.build();

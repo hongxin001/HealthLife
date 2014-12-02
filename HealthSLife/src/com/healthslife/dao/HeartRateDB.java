@@ -1,5 +1,6 @@
 package com.healthslife.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import android.content.Context;
@@ -37,10 +38,8 @@ public class HeartRateDB {
 				.getRuntimeExceptionDao(HeartRateRecord.class);
 		int size = dao.queryForAll().size();
 		if (size == 0)
-			return null;
-		
+			return new HeartRateRecord(0, new Date().getTime());
 		return dao.queryForAll().get(size-1);
-
 	}
 
 	protected void releaseDataHelper() {

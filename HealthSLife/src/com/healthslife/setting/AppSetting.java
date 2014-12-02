@@ -23,9 +23,7 @@ public class AppSetting {
 	private static final String LIGHT = "";
 	private Context mContext;
 
-	
-	
-	public static final String ACCOUNT_N = "00237";
+	public static String ACCOUNT_N = "00068";
 	public static final String PSW_N = "1994";
 	public AppSetting(Context context) {
 		mContext = context.getApplicationContext();

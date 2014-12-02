@@ -18,13 +18,13 @@ public class MyApplicationManager {
 	private void initBase() {
 		initAppInfo();
 	}
-
+	
 	private void initOptional() {
 		if(isInitCrash){
 			initCrashManager();
 		}
 	}
-
+	//I miss you
 	private void initAppInfo() {
 		MyApplicationInfo info = MyApplicationInfo.getInstance();
 		info.init(mContext);
